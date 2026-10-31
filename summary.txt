@@ -1,0 +1,5 @@
+Investigating the Effect of Prompt Depth on Parameter Efficiency and Unseen-Class Generalization in Vision-Language Models
+
+MaPLe: Multi-modal Prompt Learning
+
+https://arxiv.org/abs/2210.03117
