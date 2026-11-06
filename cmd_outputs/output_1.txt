@@ -1,0 +1,358 @@
+Windows PowerShell
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+PS E:\Codes\yzm5110\Dassl.pytorch> pip install -r requirements.txt
+Collecting flake8==3.7.9 (from -r requirements.txt (line 1))
+  Downloading flake8-3.7.9-py2.py3-none-any.whl.metadata (3.6 kB)
+Collecting yapf==0.29.0 (from -r requirements.txt (line 2))
+  Downloading yapf-0.29.0-py2.py3-none-any.whl.metadata (30 kB)
+Collecting isort==4.3.21 (from -r requirements.txt (line 3))
+  Downloading isort-4.3.21-py2.py3-none-any.whl.metadata (19 kB)
+Collecting yacs (from -r requirements.txt (line 4))
+  Downloading yacs-0.1.8-py3-none-any.whl.metadata (639 bytes)
+Collecting gdown (from -r requirements.txt (line 5))
+  Downloading gdown-6.5.1-py3-none-any.whl.metadata (11 kB)
+Collecting tb-nightly (from -r requirements.txt (line 6))
+  Downloading tb_nightly-2.21.0a20251023-py3-none-any.whl.metadata (1.9 kB)
+Collecting future (from -r requirements.txt (line 7))
+  Downloading future-1.0.0-py3-none-any.whl.metadata (4.0 kB)
+Collecting scipy (from -r requirements.txt (line 8))
+  Downloading scipy-1.18.1-cp313-cp313-win_amd64.whl.metadata (61 kB)
+Collecting scikit-learn (from -r requirements.txt (line 9))
+  Downloading scikit_learn-1.9.1-cp313-cp313-win_amd64.whl.metadata (9.3 kB)
+Requirement already satisfied: tqdm in C:\Users\siyah\miniconda3\Lib\site-packages (from -r requirements.txt (line 10))(4.67.3)
+Collecting ftfy (from -r requirements.txt (line 11))
+  Downloading ftfy-6.3.1-py3-none-any.whl.metadata (7.3 kB)
+Collecting regex (from -r requirements.txt (line 12))
+  Downloading regex-2026.9.29-cp313-cp313-win_amd64.whl.metadata (41 kB)
+Collecting wilds==1.2.2 (from -r requirements.txt (line 13))
+  Downloading wilds-1.2.2-py3-none-any.whl.metadata (14 kB)
+Collecting tabulate (from -r requirements.txt (line 14))
+  Downloading tabulate-0.10.0-py3-none-any.whl.metadata (40 kB)
+Collecting entrypoints<0.4.0,>=0.3.0 (from flake8==3.7.9->-r requirements.txt (line 1))
+  Downloading entrypoints-0.3-py2.py3-none-any.whl.metadata (1.4 kB)
+Collecting pyflakes<2.2.0,>=2.1.0 (from flake8==3.7.9->-r requirements.txt (line 1))
+  Downloading pyflakes-2.1.1-py2.py3-none-any.whl.metadata (3.8 kB)
+Collecting pycodestyle<2.6.0,>=2.5.0 (from flake8==3.7.9->-r requirements.txt (line 1))
+  Downloading pycodestyle-2.5.0-py2.py3-none-any.whl.metadata (28 kB)
+Collecting mccabe<0.7.0,>=0.6.0 (from flake8==3.7.9->-r requirements.txt (line 1))
+  Downloading mccabe-0.6.1-py2.py3-none-any.whl.metadata (4.3 kB)
+Collecting numpy>=1.19.1 (from wilds==1.2.2->-r requirements.txt (line 13))
+  Downloading numpy-2.5.4-cp313-cp313-win_amd64.whl.metadata (6.6 kB)
+Collecting ogb>=1.2.6 (from wilds==1.2.2->-r requirements.txt (line 13))
+  Downloading ogb-1.3.6-py3-none-any.whl.metadata (6.2 kB)
+Collecting outdated>=0.2.0 (from wilds==1.2.2->-r requirements.txt (line 13))
+  Downloading outdated-0.2.2-py2.py3-none-any.whl.metadata (4.7 kB)
+Collecting pandas>=1.1.0 (from wilds==1.2.2->-r requirements.txt (line 13))
+  Downloading pandas-3.1.0-cp313-cp313-win_amd64.whl.metadata (18 kB)
+Collecting pillow>=7.2.0 (from wilds==1.2.2->-r requirements.txt (line 13))
+  Downloading pillow-13.0.0-cp313-cp313-win_amd64.whl.metadata (9.3 kB)
+Collecting pytz>=2020.4 (from wilds==1.2.2->-r requirements.txt (line 13))
+  Downloading pytz-2026.6-py2.py3-none-any.whl.metadata (22 kB)
+Collecting torch>=1.7.0 (from wilds==1.2.2->-r requirements.txt (line 13))
+  Downloading torch-2.15.0-cp313-cp313-win_amd64.whl.metadata (36 kB)
+Collecting torchvision>=0.8.2 (from wilds==1.2.2->-r requirements.txt (line 13))
+  Downloading torchvision-0.29.2-py3-none-win_amd64.whl.metadata (5.7 kB)
+Collecting PyYAML (from yacs->-r requirements.txt (line 4))
+  Downloading pyyaml-6.0.3-cp313-cp313-win_amd64.whl.metadata (2.4 kB)
+Requirement already satisfied: beautifulsoup4 in C:\Users\siyah\miniconda3\Lib\site-packages (from gdown->-r requirements.txt (line 5)) (4.15.0)
+Collecting filelock (from gdown->-r requirements.txt (line 5))
+  Downloading filelock-4.2.7-py3-none-any.whl.metadata (2.0 kB)
+Requirement already satisfied: requests[socks] in C:\Users\siyah\miniconda3\Lib\site-packages (from gdown->-r requirements.txt (line 5)) (2.33.1)
+Requirement already satisfied: urllib3 in C:\Users\siyah\miniconda3\Lib\site-packages (from gdown->-r requirements.txt (line 5)) (2.6.3)
+Collecting absl-py>=0.4 (from tb-nightly->-r requirements.txt (line 6))
+  Downloading absl_py-2.5.1-py3-none-any.whl.metadata (3.3 kB)
+Collecting grpcio>=1.48.2 (from tb-nightly->-r requirements.txt (line 6))
+  Downloading grpcio-1.85.1-cp313-cp313-win_amd64.whl.metadata (3.9 kB)
+Collecting markdown>=2.6.8 (from tb-nightly->-r requirements.txt (line 6))
+  Downloading markdown-3.11.2-py3-none-any.whl.metadata (5.1 kB)
+Requirement already satisfied: packaging in C:\Users\siyah\miniconda3\Lib\site-packages (from tb-nightly->-r requirements.txt (line 6)) (26.0)
+Collecting protobuf!=4.24.0,>=3.19.6 (from tb-nightly->-r requirements.txt (line 6))
+  Downloading protobuf-7.36.2-cp310-abi3-win_amd64.whl.metadata (595 bytes)
+Requirement already satisfied: setuptools>=41.0.0 in C:\Users\siyah\miniconda3\Lib\site-packages (from tb-nightly->-r requirements.txt (line 6)) (82.0.1)
+Collecting tensorboard-data-server<0.8.0,>=0.7.0 (from tb-nightly->-r requirements.txt (line 6))
+  Downloading tensorboard_data_server-0.7.2-py3-none-any.whl.metadata (1.1 kB)
+Collecting werkzeug>=1.0.1 (from tb-nightly->-r requirements.txt (line 6))
+  Downloading werkzeug-3.1.9-py3-none-any.whl.metadata (4.1 kB)
+Collecting joblib>=1.4.0 (from scikit-learn->-r requirements.txt (line 9))
+  Downloading joblib-1.6.0-py3-none-any.whl.metadata (6.5 kB)
+Collecting narwhals>=2.0.1 (from scikit-learn->-r requirements.txt (line 9))
+  Downloading narwhals-2.28.0-py3-none-any.whl.metadata (15 kB)
+Collecting threadpoolctl>=3.5.0 (from scikit-learn->-r requirements.txt (line 9))
+  Downloading threadpoolctl-3.7.0-py3-none-any.whl.metadata (24 kB)
+Requirement already satisfied: colorama in C:\Users\siyah\miniconda3\Lib\site-packages (from tqdm->-r requirements.txt (line 10)) (0.4.6)
+Collecting wcwidth (from ftfy->-r requirements.txt (line 11))
+  Downloading wcwidth-0.9.4-cp310-abi3-win_amd64.whl.metadata (24 kB)
+Requirement already satisfied: typing-extensions~=4.12 in C:\Users\siyah\miniconda3\Lib\site-packages (from grpcio>=1.48.2->tb-nightly->-r requirements.txt (line 6)) (4.15.0)
+Collecting cloudpickle>=3.0 (from joblib>=1.4.0->scikit-learn->-r requirements.txt (line 9))
+  Downloading cloudpickle-3.1.2-py3-none-any.whl.metadata (7.1 kB)
+Requirement already satisfied: six>=1.12.0 in C:\Users\siyah\miniconda3\Lib\site-packages (from ogb>=1.2.6->wilds==1.2.2->-r requirements.txt (line 13)) (1.17.0)
+Collecting littleutils (from outdated>=0.2.0->wilds==1.2.2->-r requirements.txt (line 13))
+  Downloading littleutils-0.2.4-py3-none-any.whl.metadata (679 bytes)
+Collecting python-dateutil>=2.9.0 (from pandas>=1.1.0->wilds==1.2.2->-r requirements.txt (line 13))
+  Downloading python_dateutil-4.0.0-py3-none-any.whl.metadata (7.3 kB)
+Requirement already satisfied: tzdata in C:\Users\siyah\miniconda3\Lib\site-packages (from pandas>=1.1.0->wilds==1.2.2->-r requirements.txt (line 13)) (2026.6)
+Collecting sympy>=1.13.3 (from torch>=1.7.0->wilds==1.2.2->-r requirements.txt (line 13))
+  Downloading sympy-1.14.0-py3-none-any.whl.metadata (12 kB)
+Collecting networkx>=2.5.1 (from torch>=1.7.0->wilds==1.2.2->-r requirements.txt (line 13))
+  Downloading networkx-3.7-py3-none-any.whl.metadata (6.7 kB)
+Collecting jinja2 (from torch>=1.7.0->wilds==1.2.2->-r requirements.txt (line 13))
+  Downloading jinja2-3.1.6-py3-none-any.whl.metadata (2.9 kB)
+Collecting fsspec>=0.8.5 (from torch>=1.7.0->wilds==1.2.2->-r requirements.txt (line 13))
+  Downloading fsspec-2026.9.0-py3-none-any.whl.metadata (10 kB)
+Collecting mpmath<1.4,>=1.1.0 (from sympy>=1.13.3->torch>=1.7.0->wilds==1.2.2->-r requirements.txt (line 13))
+  Downloading mpmath-1.3.0-py3-none-any.whl.metadata (8.6 kB)
+Collecting markupsafe>=2.1.1 (from werkzeug>=1.0.1->tb-nightly->-r requirements.txt (line 6))
+  Downloading markupsafe-3.0.4-cp313-cp313-win_amd64.whl.metadata (2.8 kB)
+Requirement already satisfied: soupsieve>=1.6.1 in C:\Users\siyah\miniconda3\Lib\site-packages (from beautifulsoup4->gdown->-r requirements.txt (line 5)) (3.0.4)
+Requirement already satisfied: charset_normalizer<4,>=2 in C:\Users\siyah\miniconda3\Lib\site-packages (from requests[socks]->gdown->-r requirements.txt (line 5)) (3.4.4)
+Requirement already satisfied: idna<4,>=2.5 in C:\Users\siyah\miniconda3\Lib\site-packages (from requests[socks]->gdown->-r requirements.txt (line 5)) (3.11)
+Requirement already satisfied: certifi>=2023.5.7 in C:\Users\siyah\miniconda3\Lib\site-packages (from requests[socks]->gdown->-r requirements.txt (line 5)) (2026.4.22)
+Requirement already satisfied: PySocks!=1.5.7,>=1.5.6 in C:\Users\siyah\miniconda3\Lib\site-packages (from requests[socks]->gdown->-r requirements.txt (line 5)) (1.7.1)
+Downloading flake8-3.7.9-py2.py3-none-any.whl (69 kB)
+Downloading yapf-0.29.0-py2.py3-none-any.whl (185 kB)
+Downloading isort-4.3.21-py2.py3-none-any.whl (42 kB)
+Downloading wilds-1.2.2-py3-none-any.whl (92 kB)
+Downloading entrypoints-0.3-py2.py3-none-any.whl (11 kB)
+Downloading mccabe-0.6.1-py2.py3-none-any.whl (8.6 kB)
+Downloading pycodestyle-2.5.0-py2.py3-none-any.whl (51 kB)
+Downloading pyflakes-2.1.1-py2.py3-none-any.whl (59 kB)
+Downloading yacs-0.1.8-py3-none-any.whl (14 kB)
+Downloading gdown-6.5.1-py3-none-any.whl (51 kB)
+Downloading tb_nightly-2.21.0a20251023-py3-none-any.whl (5.5 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 5.5/5.5 MB 23.8 MB/s  0:00:00
+Downloading tensorboard_data_server-0.7.2-py3-none-any.whl (2.4 kB)
+Downloading future-1.0.0-py3-none-any.whl (491 kB)
+Downloading scipy-1.18.1-cp313-cp313-win_amd64.whl (36.6 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 36.6/36.6 MB 88.2 MB/s  0:00:00
+Downloading numpy-2.5.4-cp313-cp313-win_amd64.whl (12.6 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 12.6/12.6 MB 102.7 MB/s  0:00:00
+Downloading scikit_learn-1.9.1-cp313-cp313-win_amd64.whl (8.2 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 8.2/8.2 MB 86.4 MB/s  0:00:00
+Downloading ftfy-6.3.1-py3-none-any.whl (44 kB)
+Downloading regex-2026.9.29-cp313-cp313-win_amd64.whl (280 kB)
+Downloading tabulate-0.10.0-py3-none-any.whl (39 kB)
+Downloading absl_py-2.5.1-py3-none-any.whl (137 kB)
+Downloading grpcio-1.85.1-cp313-cp313-win_amd64.whl (5.6 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 5.6/5.6 MB 53.4 MB/s  0:00:00
+Downloading joblib-1.6.0-py3-none-any.whl (306 kB)
+Downloading cloudpickle-3.1.2-py3-none-any.whl (22 kB)
+Downloading markdown-3.11.2-py3-none-any.whl (114 kB)
+Downloading narwhals-2.28.0-py3-none-any.whl (490 kB)
+Downloading ogb-1.3.6-py3-none-any.whl (78 kB)
+Downloading outdated-0.2.2-py2.py3-none-any.whl (7.5 kB)
+Downloading pandas-3.1.0-cp313-cp313-win_amd64.whl (10.7 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 10.7/10.7 MB 87.0 MB/s  0:00:00
+Downloading pillow-13.0.0-cp313-cp313-win_amd64.whl (7.3 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 7.3/7.3 MB 63.1 MB/s  0:00:00
+Downloading protobuf-7.36.2-cp310-abi3-win_amd64.whl (456 kB)
+Downloading python_dateutil-4.0.0-py3-none-any.whl (92 kB)
+Downloading pytz-2026.6-py2.py3-none-any.whl (506 kB)
+Downloading threadpoolctl-3.7.0-py3-none-any.whl (26 kB)
+Downloading torch-2.15.0-cp313-cp313-win_amd64.whl (126.7 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 126.7/126.7 MB 68.4 MB/s  0:00:01
+Downloading fsspec-2026.9.0-py3-none-any.whl (221 kB)
+Downloading networkx-3.7-py3-none-any.whl (2.1 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.1/2.1 MB 84.3 MB/s  0:00:00
+Downloading sympy-1.14.0-py3-none-any.whl (6.3 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 6.3/6.3 MB 100.6 MB/s  0:00:00
+Downloading mpmath-1.3.0-py3-none-any.whl (536 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 536.2/536.2 kB 42.0 MB/s  0:00:00
+Downloading torchvision-0.29.2-py3-none-win_amd64.whl (1.4 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.4/1.4 MB 32.3 MB/s  0:00:00
+Downloading werkzeug-3.1.9-py3-none-any.whl (228 kB)
+Downloading markupsafe-3.0.4-cp313-cp313-win_amd64.whl (14 kB)
+Downloading filelock-4.2.7-py3-none-any.whl (164 kB)
+Downloading jinja2-3.1.6-py3-none-any.whl (134 kB)
+Downloading littleutils-0.2.4-py3-none-any.whl (8.1 kB)
+Downloading pyyaml-6.0.3-cp313-cp313-win_amd64.whl (154 kB)
+Downloading wcwidth-0.9.4-cp310-abi3-win_amd64.whl (597 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 597.8/597.8 kB 64.4 MB/s  0:00:00
+Installing collected packages: yapf, pytz, mpmath, mccabe, wcwidth, threadpoolctl, tensorboard-data-server, tabulate, sympy, regex, PyYAML, python-dateutil, pyflakes, pycodestyle, protobuf, pillow, numpy, networkx, narwhals, markupsafe, markdown, littleutils, isort, grpcio, future, fsspec, filelock, entrypoints, cloudpickle, absl-py, yacs, werkzeug, scipy, pandas, outdated, joblib, jinja2, ftfy, flake8, torch, tb-nightly, scikit-learn, gdown, torchvision, ogb, wilds
+Successfully installed PyYAML-6.0.3 absl-py-2.5.1 cloudpickle-3.1.2 entrypoints-0.3 filelock-4.2.7 flake8-3.7.9 fsspec-2026.9.0 ftfy-6.3.1 future-1.0.0 gdown-6.5.1 grpcio-1.85.1 isort-4.3.21 jinja2-3.1.6 joblib-1.6.0 littleutils-0.2.4 markdown-3.11.2 markupsafe-3.0.4 mccabe-0.6.1 mpmath-1.3.0 narwhals-2.28.0 networkx-3.7 numpy-2.5.4 ogb-1.3.6 outdated-0.2.2pandas-3.1.0 pillow-13.0.0 protobuf-7.36.2 pycodestyle-2.5.0 pyflakes-2.1.1 python-dateutil-4.0.0 pytz-2026.6 regex-2026.9.29 scikit-learn-1.9.1 scipy-1.18.1 sympy-1.14.0 tabulate-0.10.0 tb-nightly-2.21.0a20251023 tensorboard-data-server-0.7.2 threadpoolctl-3.7.0 torch-2.15.0 torchvision-0.29.2 wcwidth-0.9.4 werkzeug-3.1.9 wilds-1.2.2 yacs-0.1.8 yapf-0.29.0
+PS E:\Codes\yzm5110\Dassl.pytorch> pip install -e . --no-deps
+Obtaining file:///E:/Codes/yzm5110/Dassl.pytorch
+  Installing build dependencies ... done
+  Checking if build backend supports build_editable ... done
+  Getting requirements to build editable ... error
+  error: subprocess-exited-with-error
+
+  × Getting requirements to build editable did not run successfully.
+  │ exit code: 1
+  ╰─> [26 lines of output]
+      Traceback (most recent call last):
+        File "C:\Users\siyah\miniconda3\Lib\site-packages\pip\_vendor\pyproject_hooks\_in_process\_in_process.py", line389, in <module>
+          main()
+          ~~~~^^
+        File "C:\Users\siyah\miniconda3\Lib\site-packages\pip\_vendor\pyproject_hooks\_in_process\_in_process.py", line373, in main
+          json_out["return_val"] = hook(**hook_input["kwargs"])
+                                   ~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+        File "C:\Users\siyah\miniconda3\Lib\site-packages\pip\_vendor\pyproject_hooks\_in_process\_in_process.py", line157, in get_requires_for_build_editable
+          return hook(config_settings)
+        File "C:\Users\siyah\AppData\Local\Temp\pip-build-env-jdzm28mn\overlay\Lib\site-packages\setuptools\build_meta.py", line 481, in get_requires_for_build_editable
+          return self.get_requires_for_build_wheel(config_settings)
+                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+        File "C:\Users\siyah\AppData\Local\Temp\pip-build-env-jdzm28mn\overlay\Lib\site-packages\setuptools\build_meta.py", line 333, in get_requires_for_build_wheel
+          return self._get_build_requires(config_settings, requirements=[])
+                 ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        File "C:\Users\siyah\AppData\Local\Temp\pip-build-env-jdzm28mn\overlay\Lib\site-packages\setuptools\build_meta.py", line 301, in _get_build_requires
+          self.run_setup()
+          ~~~~~~~~~~~~~~^^
+        File "C:\Users\siyah\AppData\Local\Temp\pip-build-env-jdzm28mn\overlay\Lib\site-packages\setuptools\build_meta.py", line 520, in run_setup
+          super().run_setup(setup_script=setup_script)
+          ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        File "C:\Users\siyah\AppData\Local\Temp\pip-build-env-jdzm28mn\overlay\Lib\site-packages\setuptools\build_meta.py", line 317, in run_setup
+          exec(code, locals())  # noqa: S102 # exec is intentional here
+          ~~~~^^^^^^^^^^^^^^^^
+        File "<string>", line 1, in <module>
+      ModuleNotFoundError: No module named 'numpy'
+      [end of output]
+
+  note: This error originates from a subprocess, and is likely not a problem with pip.
+ERROR: Failed to build 'file:///E:/Codes/yzm5110/Dassl.pytorch' when getting requirements to build editable
+PS E:\Codes\yzm5110\Dassl.pytorch> conda info --envs
+
+# conda environments:
+#
+# * -> active
+# + -> frozen
+base                     C:\Users\siyah\miniconda3
+cosyvoice                C:\Users\siyah\miniconda3\envs\cosyvoice
+
+PS E:\Codes\yzm5110\Dassl.pytorch> python --version
+Python 3.15.2
+PS E:\Codes\yzm5110\Dassl.pytorch> conda create -n maple python=3.10 -y
+3 channel Terms of Service accepted
+Retrieving notices: done
+Channels:
+ - defaults
+Platform: win-64
+Collecting package metadata (repodata.json): done
+Solving environment: done
+
+
+==> WARNING: A newer version of conda exists. <==
+    current version: 26.3.2
+    latest version: 26.5.3
+
+Please update conda by running
+
+    $ conda update -n base -c defaults conda
+
+
+
+## Package Plan ##
+
+  environment location: C:\Users\siyah\miniconda3\envs\maple
+
+  added / updated specs:
+    - python=3.10
+
+
+The following NEW packages will be INSTALLED:
+
+  bzip2              pkgs/main/win-64::bzip2-1.0.8-h2bbff1b_6
+  ca-certificates    pkgs/main/win-64::ca-certificates-2026.5.14-haa95532_0
+  libexpat           pkgs/main/win-64::libexpat-2.8.2-hd7fb8db_1
+  libffi             pkgs/main/win-64::libffi-3.4.8-h42d73b9_3
+  libzlib            pkgs/main/win-64::libzlib-1.3.2-h1c6eee0_0
+  openssl            pkgs/main/win-64::openssl-3.5.7-hbb43b14_0
+  packaging          pkgs/main/win-64::packaging-26.0-py310haa95532_0
+  pip                pkgs/main/noarch::pip-26.1.2-pyhc872135_0
+  python             pkgs/main/win-64::python-3.10.20-hb00fc5c_1
+  setuptools         pkgs/main/win-64::setuptools-82.0.1-py310haa95532_0
+  sqlite             pkgs/main/win-64::sqlite-3.53.2-hee5a0db_0
+  tk                 pkgs/main/win-64::tk-8.6.15-hf199647_0
+  tzdata             pkgs/main/noarch::tzdata-2026b-he532380_0
+  ucrt               pkgs/main/win-64::ucrt-10.0.22621.0-haa95532_0
+  vc                 pkgs/main/win-64::vc-14.3-h2df5915_12
+  vc14_runtime       pkgs/main/win-64::vc14_runtime-14.44.35208-h4927774_12
+  vs2015_runtime     pkgs/main/win-64::vs2015_runtime-14.44.35208-ha6b5a95_12
+  wheel              pkgs/main/win-64::wheel-0.47.0-py310haa95532_0
+  xz                 pkgs/main/win-64::xz-5.8.2-h53af0af_0
+  zlib               pkgs/main/win-64::zlib-1.3.2-h1c6eee0_0
+
+
+
+Downloading and Extracting Packages:
+
+Preparing transaction: done
+Verifying transaction: done
+Executing transaction: done
+#
+# To activate this environment, use
+#
+#     $ conda activate maple
+#
+# To deactivate an active environment, use
+#
+#     $ conda deactivate
+
+
+Channel "defaults" has the following notices:
+  [warning] -- Wed Sep 30 00:00:00 2026
+  Anaconda will stop building new Python 3.10 packages on the main channel after October 31, 2026. Existing Python 3.10s
+
+  [info] -- Thu Aug  6 00:00:00 2026
+  main-x (Anaconda's new authenticated channel) is now generally available, with thousands of additional packages from s
+
+PS E:\Codes\yzm5110\Dassl.pytorch> conda activate maple
+
+CondaError: Run 'conda init' before 'conda activate'
+
+PS E:\Codes\yzm5110\Dassl.pytorch> conda init
+no change     C:\Users\siyah\miniconda3\Scripts\conda.exe
+no change     C:\Users\siyah\miniconda3\Scripts\conda-script.py
+no change     C:\Users\siyah\miniconda3\condabin\conda.bat
+no change     C:\Users\siyah\miniconda3\Library\bin\conda.bat
+no change     C:\Users\siyah\miniconda3\condabin\_conda_activate.bat
+no change     C:\Users\siyah\miniconda3\condabin\rename_tmp.bat
+no change     C:\Users\siyah\miniconda3\condabin\conda_auto_activate.bat
+no change     C:\Users\siyah\miniconda3\condabin\conda_hook.bat
+no change     C:\Users\siyah\miniconda3\Scripts\activate.bat
+no change     C:\Users\siyah\miniconda3\condabin\activate.bat
+no change     C:\Users\siyah\miniconda3\condabin\deactivate.bat
+no change     C:\Users\siyah\miniconda3\Scripts\activate
+no change     C:\Users\siyah\miniconda3\Scripts\deactivate
+no change     C:\Users\siyah\miniconda3\etc\profile.d\conda.sh
+no change     C:\Users\siyah\miniconda3\etc\fish\conf.d\conda.fish
+no change     C:\Users\siyah\miniconda3\shell\condabin\Conda.psm1
+no change     C:\Users\siyah\miniconda3\shell\condabin\conda-hook.ps1
+no change     C:\Users\siyah\miniconda3\Lib\site-packages\xontrib\conda.xsh
+no change     C:\Users\siyah\miniconda3\etc\profile.d\conda.csh
+modified      C:\Users\siyah\OneDrive\Documents\WindowsPowerShell\profile.ps1
+no change     HKEY_CURRENT_USER\Software\Microsoft\Command Processor\AutoRun
+
+==> For changes to take effect, close and re-open your current shell. <==
+
+PS E:\Codes\yzm5110\Dassl.pytorch> conda activate maple
+
+CondaError: Run 'conda init' before 'conda activate'
+
+PS E:\Codes\yzm5110\Dassl.pytorch> conda init powershell
+no change     C:\Users\siyah\miniconda3\Scripts\conda.exe
+no change     C:\Users\siyah\miniconda3\Scripts\conda-script.py
+no change     C:\Users\siyah\miniconda3\condabin\conda.bat
+no change     C:\Users\siyah\miniconda3\Library\bin\conda.bat
+no change     C:\Users\siyah\miniconda3\condabin\_conda_activate.bat
+no change     C:\Users\siyah\miniconda3\condabin\rename_tmp.bat
+no change     C:\Users\siyah\miniconda3\condabin\conda_auto_activate.bat
+no change     C:\Users\siyah\miniconda3\condabin\conda_hook.bat
+no change     C:\Users\siyah\miniconda3\Scripts\activate.bat
+no change     C:\Users\siyah\miniconda3\condabin\activate.bat
+no change     C:\Users\siyah\miniconda3\condabin\deactivate.bat
+no change     C:\Users\siyah\miniconda3\Scripts\activate
+no change     C:\Users\siyah\miniconda3\Scripts\deactivate
+no change     C:\Users\siyah\miniconda3\etc\profile.d\conda.sh
+no change     C:\Users\siyah\miniconda3\etc\fish\conf.d\conda.fish
+no change     C:\Users\siyah\miniconda3\shell\condabin\Conda.psm1
+no change     C:\Users\siyah\miniconda3\shell\condabin\conda-hook.ps1
+no change     C:\Users\siyah\miniconda3\Lib\site-packages\xontrib\conda.xsh
+no change     C:\Users\siyah\miniconda3\etc\profile.d\conda.csh
+no change     C:\Users\siyah\OneDrive\Documents\WindowsPowerShell\profile.ps1
+No action taken.
+PS E:\Codes\yzm5110\Dassl.pytorch> conda activate maple
+
+CondaError: Run 'conda init' before 'conda activate'
+
+PS E:\Codes\yzm5110\Dassl.pytorch>

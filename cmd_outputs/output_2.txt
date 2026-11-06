@@ -1,0 +1,133 @@
+Microsoft Windows [Version 10.0.26300.9711]
+(c) Microsoft Corporation. All rights reserved.
+
+E:\Codes\yzm5110\Dassl.pytorch>conda activate maple
+
+(maple) E:\Codes\yzm5110\Dassl.pytorch>python -m pip install "numpy<2" setuptools wheel
+Collecting numpy<2
+  Downloading numpy-1.26.4-cp310-cp310-win_amd64.whl.metadata (61 kB)
+Requirement already satisfied: setuptools in c:\users\siyah\miniconda3\envs\maple\lib\site-packages (82.0.1)
+Requirement already satisfied: wheel in c:\users\siyah\miniconda3\envs\maple\lib\site-packages (0.47.0)
+Requirement already satisfied: packaging>=24.0 in c:\users\siyah\miniconda3\envs\maple\lib\site-packages (from wheel) (26.0)
+Downloading numpy-1.26.4-cp310-cp310-win_amd64.whl (15.8 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 15.8/15.8 MB 29.2 MB/s  0:00:00
+Installing collected packages: numpy
+Successfully installed numpy-1.26.4
+
+(maple) E:\Codes\yzm5110\Dassl.pytorch>python -m pip install -e . --no-deps --no-build-isolation
+Obtaining file:///E:/Codes/yzm5110/Dassl.pytorch
+  Checking if build backend supports build_editable ... done
+  Preparing editable metadata (pyproject.toml) ... done
+Building wheels for collected packages: dassl
+  Building editable for dassl (pyproject.toml) ... done
+  Created wheel for dassl: filename=dassl-0.6.3-0.editable-py3-none-any.whl size=10598 sha256=88e5cd57e2efa57ee1f8c5de64988dd2b498534e3094c57521249e3d57382867
+  Stored in directory: C:\Users\siyah\AppData\Local\Temp\pip-ephem-wheel-cache-3k197ffz\wheels\27\63\d9\3aaf20f2d3156946c067561f619f5e5ff5b71040e2a7cb0fd9
+Successfully built dassl
+Installing collected packages: dassl
+Successfully installed dassl-0.6.3
+
+(maple) E:\Codes\yzm5110\Dassl.pytorch>python -c "import dassl; print('Dassl OK')"
+Dassl OK
+
+(maple) E:\Codes\yzm5110\Dassl.pytorch>cd ..
+
+(maple) E:\Codes\yzm5110>cd multimodal-prompt-learning
+
+(maple) E:\Codes\yzm5110\multimodal-prompt-learning>python -c "import torch; print('PyTorch:', torch.__version__); print('CUDA:', torch.version.cuda); print('CUDA Available:', torch.cuda.is_available()); print('GPU:', torch.cuda.get_device_name(0) if torch.cuda.is_available() else 'Not available')"
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+ModuleNotFoundError: No module named 'torch'
+
+(maple) E:\Codes\yzm5110\multimodal-prompt-learning>dir
+ Volume in drive E has no label.
+ Volume Serial Number is 3A18-2AFD
+
+ Directory of E:\Codes\yzm5110\multimodal-prompt-learning
+
+03.11.2026  20:38    <DIR>          .
+03.11.2026  20:46    <DIR>          ..
+03.11.2026  20:38    <DIR>          clip
+03.11.2026  20:38           763.671 clip_words.csv
+03.11.2026  20:38    <DIR>          configs
+03.11.2026  20:38    <DIR>          datasets
+03.11.2026  20:38    <DIR>          docs
+03.11.2026  20:38    <DIR>          interpret_prompts
+03.11.2026  20:38             1.111 LICENSE
+03.11.2026  20:38    <DIR>          lpclip
+03.11.2026  20:38             4.608 parse_test_res.py
+03.11.2026  20:38            11.745 README.md
+03.11.2026  20:38                23 requirements.txt
+03.11.2026  20:38    <DIR>          scripts
+03.11.2026  20:38             7.444 train.py
+03.11.2026  20:38    <DIR>          trainers
+               6 File(s)        788.602 bytes
+              10 Dir(s)  426.721.533.952 bytes free
+
+(maple) E:\Codes\yzm5110\multimodal-prompt-learning>Get-Content requirements.txt
+'Get-Content' is not recognized as an internal or external command,
+operable program or batch file.
+
+(maple) E:\Codes\yzm5110\multimodal-prompt-learning>python -m pip install torch torchvision --index-url https://download.pytorch.org/whl/cu128
+Looking in indexes: https://download.pytorch.org/whl/cu128
+Collecting torch
+  Downloading torch-2.11.0%2Bcu128-cp310-cp310-win_amd64.whl.metadata (29 kB)
+Collecting torchvision
+  Downloading torchvision-0.26.0%2Bcu128-cp310-cp310-win_amd64.whl.metadata (5.6 kB)
+Collecting filelock (from torch)
+  Downloading filelock-4.1.0-py3-none-any.whl.metadata (2.0 kB)
+Collecting typing-extensions>=4.10.0 (from torch)
+  Downloading typing_extensions-4.16.0-py3-none-any.whl.metadata (3.3 kB)
+Collecting setuptools<82 (from torch)
+  Downloading setuptools-78.1.0-py3-none-any.whl.metadata (6.6 kB)
+Collecting sympy>=1.13.3 (from torch)
+  Using cached sympy-1.14.0-py3-none-any.whl.metadata (12 kB)
+Collecting networkx>=2.5.1 (from torch)
+  Downloading networkx-3.4.2-py3-none-any.whl.metadata (6.3 kB)
+Collecting jinja2 (from torch)
+  Downloading jinja2-3.1.6-py3-none-any.whl.metadata (2.9 kB)
+Collecting fsspec>=0.8.5 (from torch)
+  Using cached fsspec-2026.9.0-py3-none-any.whl.metadata (10 kB)
+Requirement already satisfied: numpy in c:\users\siyah\miniconda3\envs\maple\lib\site-packages (from torchvision) (1.26.4)
+Collecting pillow!=8.3.*,>=5.3.0 (from torchvision)
+  Downloading pillow-12.3.0-cp310-cp310-win_amd64.whl.metadata (9.3 kB)
+Collecting mpmath<1.4,>=1.1.0 (from sympy>=1.13.3->torch)
+  Using cached mpmath-1.3.0-py3-none-any.whl.metadata (8.6 kB)
+Collecting MarkupSafe>=2.0 (from jinja2->torch)
+  Downloading markupsafe-3.0.3-cp310-cp310-win_amd64.whl.metadata (2.8 kB)
+Downloading torch-2.11.0%2Bcu128-cp310-cp310-win_amd64.whl (2753.2 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.8/2.8 GB 48.1 MB/s  0:00:29
+Downloading setuptools-78.1.0-py3-none-any.whl (1.3 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.3/1.3 MB ?  0:00:00
+Downloading torchvision-0.26.0%2Bcu128-cp310-cp310-win_amd64.whl (9.0 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 9.0/9.0 MB 112.0 MB/s  0:00:00
+Using cached fsspec-2026.9.0-py3-none-any.whl (221 kB)
+Downloading networkx-3.4.2-py3-none-any.whl (1.7 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.7/1.7 MB 10.4 MB/s  0:00:00
+Downloading pillow-12.3.0-cp310-cp310-win_amd64.whl (7.2 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 7.2/7.2 MB 44.6 MB/s  0:00:00
+Using cached sympy-1.14.0-py3-none-any.whl (6.3 MB)
+Using cached mpmath-1.3.0-py3-none-any.whl (536 kB)
+Downloading typing_extensions-4.16.0-py3-none-any.whl (45 kB)
+Downloading filelock-4.1.0-py3-none-any.whl (133 kB)
+Downloading jinja2-3.1.6-py3-none-any.whl (134 kB)
+Downloading markupsafe-3.0.3-cp310-cp310-win_amd64.whl (15 kB)
+Installing collected packages: mpmath, typing-extensions, sympy, setuptools, pillow, networkx, MarkupSafe, fsspec, filelock, jinja2, torch, torchvision
+  Attempting uninstall: setuptools
+    Found existing installation: setuptools 82.0.1
+    Uninstalling setuptools-82.0.1:
+      Successfully uninstalled setuptools-82.0.1
+Successfully installed MarkupSafe-3.0.3 filelock-4.1.0 fsspec-2026.9.0 jinja2-3.1.6 mpmath-1.3.0 networkx-3.4.2 pillow-12.3.0 setuptools-78.1.0 sympy-1.14.0 torch-2.11.0+cu128 torchvision-0.26.0+cu128 typing-extensions-4.16.0
+
+(maple) E:\Codes\yzm5110\multimodal-prompt-learning>python -c "import torch; print('PyTorch:', torch.__version__); print('CUDA:', torch.version.cuda); print('CUDA Available:', torch.cuda.is_available()); print('GPU:', torch.cuda.get_device_name(0) if torch.cuda.is_available() else 'Not available')"python -c "import torch; print('PyTorch:', torch.__version__); print('CUDA:', torch.version.cuda); print('CUDA Available:', torch.cuda.is_available()); print('GPU:', torch.cuda.get_device_name(0) if torch.cuda.is_available() else 'Not available')"python -c "import torch; print('PyTorch:', torch.__version__); print('CUDA:', torch.version.cuda); print('CUDA Available:', torch.cuda.is_available()); print('GPU:', torch.cuda.get_device_name(0) if torch.cuda.is_available() else 'Not available')"
+  File "<string>", line 1
+    import torch; print('PyTorch:', torch.__version__); print('CUDA:', torch.version.cuda); print('CUDA Available:', torch.cuda.is_available()); print('GPU:', torch.cuda.get_device_name(0) if torch.cuda.is_available() else 'Not available')python
+                                                                                                                       ^^^^^^
+SyntaxError: invalid syntax
+
+(maple) E:\Codes\yzm5110\multimodal-prompt-learning>python -c "import torch; print('PyTorch:', torch.__version__); print('CUDA:', torch.version.cuda); print('CUDA Available:', torch.cuda.is_available()); print('GPU:', torch.cuda.get_device_name(0) if torch.cuda.is_available() else 'Not available')"
+PyTorch: 2.11.0+cu128
+CUDA: 12.8
+CUDA Available: True
+GPU: NVIDIA GeForce RTX 5070 Ti Laptop GPU
+
+(maple) E:\Codes\yzm5110\multimodal-prompt-learning>
