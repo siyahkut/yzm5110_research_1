@@ -1,0 +1,1860 @@
+Setting fixed seed: 1
+***************
+** Arguments **
+***************
+backbone: 
+config_file: configs/trainers/MaPLe/vit_b16_c2_ep5_batch4_2ctx.yaml
+dataset_config_file: configs/datasets/eurosat.yaml
+eval_only: False
+head: 
+load_epoch: None
+model_dir: 
+no_train: False
+opts: ['DATASET.NUM_SHOTS', '16', 'DATASET.SUBSAMPLE_CLASSES', 'base', 'DATALOADER.NUM_WORKERS', '0', 'TRAINER.MAPLE.PROMPT_DEPTH', '7']
+output_dir: output/ablation/dapr_depth7_gamma0_lambda01/seed1
+resume: 
+root: E:\Codes\yzm5110\datasets
+seed: 1
+source_domains: None
+target_domains: None
+trainer: MaPLe
+transforms: None
+************
+** Config **
+************
+DATALOADER:
+  K_TRANSFORMS: 1
+  NUM_WORKERS: 0
+  RETURN_IMG0: False
+  TEST:
+    BATCH_SIZE: 100
+    SAMPLER: SequentialSampler
+  TRAIN_U:
+    BATCH_SIZE: 32
+    N_DOMAIN: 0
+    N_INS: 16
+    SAME_AS_X: True
+    SAMPLER: RandomSampler
+  TRAIN_X:
+    BATCH_SIZE: 4
+    N_DOMAIN: 0
+    N_INS: 16
+    SAMPLER: RandomSampler
+DATASET:
+  ALL_AS_UNLABELED: False
+  CIFAR_C_LEVEL: 1
+  CIFAR_C_TYPE: 
+  NAME: EuroSAT
+  NUM_LABELED: -1
+  NUM_SHOTS: 16
+  ROOT: E:\Codes\yzm5110\datasets
+  SOURCE_DOMAINS: ()
+  STL10_FOLD: -1
+  SUBSAMPLE_CLASSES: base
+  TARGET_DOMAINS: ()
+  VAL_PERCENT: 0.1
+INPUT:
+  COLORJITTER_B: 0.4
+  COLORJITTER_C: 0.4
+  COLORJITTER_H: 0.1
+  COLORJITTER_S: 0.4
+  CROP_PADDING: 4
+  CUTOUT_LEN: 16
+  CUTOUT_N: 1
+  GB_K: 21
+  GB_P: 0.5
+  GN_MEAN: 0.0
+  GN_STD: 0.15
+  INTERPOLATION: bicubic
+  NO_TRANSFORM: False
+  PIXEL_MEAN: [0.48145466, 0.4578275, 0.40821073]
+  PIXEL_STD: [0.26862954, 0.26130258, 0.27577711]
+  RANDAUGMENT_M: 10
+  RANDAUGMENT_N: 2
+  RGS_P: 0.2
+  RRCROP_SCALE: (0.08, 1.0)
+  SIZE: (224, 224)
+  TRANSFORMS: ('random_resized_crop', 'random_flip', 'normalize')
+MODEL:
+  BACKBONE:
+    NAME: ViT-B/16
+    PRETRAINED: True
+  HEAD:
+    ACTIVATION: relu
+    BN: True
+    DROPOUT: 0.0
+    HIDDEN_LAYERS: ()
+    NAME: 
+  INIT_WEIGHTS: 
+OPTIM:
+  ADAM_BETA1: 0.9
+  ADAM_BETA2: 0.999
+  BASE_LR_MULT: 0.1
+  GAMMA: 0.1
+  LR: 0.0035
+  LR_SCHEDULER: cosine
+  MAX_EPOCH: 5
+  MOMENTUM: 0.9
+  NAME: sgd
+  NEW_LAYERS: ()
+  RMSPROP_ALPHA: 0.99
+  SGD_DAMPNING: 0
+  SGD_NESTEROV: False
+  STAGED_LR: False
+  STEPSIZE: (-1,)
+  WARMUP_CONS_LR: 1e-05
+  WARMUP_EPOCH: 1
+  WARMUP_MIN_LR: 1e-05
+  WARMUP_RECOUNT: True
+  WARMUP_TYPE: constant
+  WEIGHT_DECAY: 0.0005
+OUTPUT_DIR: output/ablation/dapr_depth7_gamma0_lambda01/seed1
+RESUME: 
+SEED: 1
+TEST:
+  COMPUTE_CMAT: False
+  EVALUATOR: Classification
+  FINAL_MODEL: last_step
+  NO_TEST: False
+  PER_CLASS_RESULT: False
+  SPLIT: test
+TRAIN:
+  CHECKPOINT_FREQ: 0
+  COUNT_ITER: train_x
+  PRINT_FREQ: 20
+TRAINER:
+  CDAC:
+    CLASS_LR_MULTI: 10
+    P_THRESH: 0.95
+    RAMPUP_COEF: 30
+    RAMPUP_ITRS: 1000
+    STRONG_TRANSFORMS: ()
+    TOPK_MATCH: 5
+  COCOOP:
+    CTX_INIT: 
+    N_CTX: 16
+    PREC: fp16
+  COOP:
+    CLASS_TOKEN_POSITION: end
+    CSC: False
+    CTX_INIT: 
+    N_CTX: 16
+    PREC: fp16
+  CROSSGRAD:
+    ALPHA_D: 0.5
+    ALPHA_F: 0.5
+    EPS_D: 1.0
+    EPS_F: 1.0
+  DAEL:
+    CONF_THRE: 0.95
+    STRONG_TRANSFORMS: ()
+    WEIGHT_U: 0.5
+  DAELDG:
+    CONF_THRE: 0.95
+    STRONG_TRANSFORMS: ()
+    WEIGHT_U: 0.5
+  DDAIG:
+    ALPHA: 0.5
+    CLAMP: False
+    CLAMP_MAX: 1.0
+    CLAMP_MIN: -1.0
+    G_ARCH: 
+    LMDA: 0.3
+    WARMUP: 0
+  DOMAINMIX:
+    ALPHA: 1.0
+    BETA: 1.0
+    TYPE: crossdomain
+  ENTMIN:
+    LMDA: 0.001
+  FIXMATCH:
+    CONF_THRE: 0.95
+    STRONG_TRANSFORMS: ()
+    WEIGHT_U: 1.0
+  IVLP:
+    CTX_INIT: a photo of a
+    N_CTX_TEXT: 2
+    N_CTX_VISION: 2
+    PREC: fp16
+    PROMPT_DEPTH_TEXT: 9
+    PROMPT_DEPTH_VISION: 9
+  M3SDA:
+    LMDA: 0.5
+    N_STEP_F: 4
+  MAPLE:
+    CTX_INIT: a photo of a
+    N_CTX: 2
+    PREC: fp16
+    PROMPT_DEPTH: 7
+  MCD:
+    N_STEP_F: 4
+  MEANTEACHER:
+    EMA_ALPHA: 0.999
+    RAMPUP: 5
+    WEIGHT_U: 1.0
+  MIXMATCH:
+    MIXUP_BETA: 0.75
+    RAMPUP: 20000
+    TEMP: 2.0
+    WEIGHT_U: 100.0
+  MME:
+    LMDA: 0.1
+  NAME: MaPLe
+  SE:
+    CONF_THRE: 0.95
+    EMA_ALPHA: 0.999
+    RAMPUP: 300
+  VPT:
+    CTX_INIT: a photo of a
+    N_CTX_VISION: 2
+    PREC: fp16
+    PROMPT_DEPTH_VISION: 1
+USE_CUDA: True
+VERBOSE: True
+VERSION: 1
+Collecting env info ...
+** System info **
+PyTorch version: 2.11.0+cu128
+Is debug build: False
+CUDA used to build PyTorch: 12.8
+ROCM used to build PyTorch: N/A
+
+OS: Microsoft Windows 11 Pro (10.0.26300 64-bit)
+GCC version: Could not collect
+Clang version: Could not collect
+CMake version: Could not collect
+Libc version: N/A
+
+Python version: 3.10.20 | packaged by Anaconda, Inc. | (main, Jun 11 2026, 15:13:20) [MSC v.1942 64 bit (AMD64)] (64-bit runtime)
+Python platform: Windows-10-10.0.26300-SP0
+Is CUDA available: True
+CUDA runtime version: Could not collect
+CUDA_MODULE_LOADING set to: 
+GPU models and configuration: GPU 0: NVIDIA GeForce RTX 5070 Ti Laptop GPU
+Nvidia driver version: Could not collect
+cuDNN version: Could not collect
+Is XPU available: False
+HIP runtime version: N/A
+MIOpen runtime version: N/A
+Is XNNPACK available: True
+Caching allocator config: N/A
+
+CPU:
+Name: AMD Ryzen 9 9955HX 16-Core Processor           
+Manufacturer: AuthenticAMD
+Family: 107
+Architecture: 9
+ProcessorType: 3
+DeviceID: CPU0
+CurrentClockSpeed: 2500
+MaxClockSpeed: 2500
+L2CacheSize: 16384
+L2CacheSpeed: None
+Revision: 17408
+
+Versions of relevant libraries:
+[pip3] flake8==7.4.1
+[pip3] mypy_extensions==1.2.0
+[pip3] numpy==1.26.4
+[pip3] torch==2.11.0+cu128
+[pip3] torchvision==0.26.0+cu128
+[conda] numpy                      1.26.4           pypi_0           pypi
+[conda] torch                      2.11.0+cu128     pypi_0           pypi
+[conda] torchvision                0.26.0+cu128     pypi_0           pypi
+        Pillow (12.3.0)
+
+Loading trainer: MaPLe
+Loading dataset: EuroSAT
+Reading split from E:\Codes\yzm5110\datasets\eurosat\split_zhou_EuroSAT.json
+Loading preprocessed few-shot data from E:\Codes\yzm5110\datasets\eurosat\split_fewshot\shot_16-seed_1.pkl
+SUBSAMPLE BASE CLASSES!
+Building transform_train
++ random resized crop (size=(224, 224), scale=(0.08, 1.0))
++ random flip
++ to torch tensor of range [0, 1]
++ normalization (mean=[0.48145466, 0.4578275, 0.40821073], std=[0.26862954, 0.26130258, 0.27577711])
+Building transform_test
++ resize the smaller edge to 224
++ 224x224 center crop
++ to torch tensor of range [0, 1]
++ normalization (mean=[0.48145466, 0.4578275, 0.40821073], std=[0.26862954, 0.26130258, 0.27577711])
+---------  -------
+Dataset    EuroSAT
+# classes  5
+# train_x  80
+# val      20
+# test     4,200
+---------  -------
+Loading CLIP (backbone: ViT-B/16)
+Building custom CLIP
+MaPLe design: Multi-modal Prompt Learning
+Initial context: "a photo of a"
+Number of MaPLe context words (tokens): 2
+DAPR: lambda=0.1, gamma=0.0
+Turning off gradients in both the image and the text encoder
+Parameters to be updated: {'prompt_learner.compound_prompt_projections.3.bias', 'prompt_learner.compound_prompt_projections.2.weight', 'prompt_learner.compound_prompts_text.4', 'prompt_learner.compound_prompts_text.1', 'prompt_learner.compound_prompt_projections.4.weight', 'prompt_learner.compound_prompts_text.3', 'prompt_learner.compound_prompt_projections.5.weight', 'prompt_learner.compound_prompt_projections.5.bias', 'prompt_learner.proj.weight', 'prompt_learner.compound_prompts_text.5', 'prompt_learner.proj.bias', 'prompt_learner.compound_prompt_projections.1.bias', 'prompt_learner.ctx', 'prompt_learner.compound_prompt_projections.4.bias', 'prompt_learner.compound_prompt_projections.3.weight', 'prompt_learner.compound_prompt_projections.1.weight', 'prompt_learner.compound_prompt_projections.2.bias', 'prompt_learner.compound_prompts_text.2', 'prompt_learner.compound_prompt_projections.0.weight', 'prompt_learner.compound_prompt_projections.0.bias', 'prompt_learner.compound_prompts_text.0'}
+Loading evaluator: Classification
+No checkpoint found, train from scratch
+Initialize tensorboard (log_dir=output/ablation/dapr_depth7_gamma0_lambda01/seed1\tensorboard)
+epoch [1/5] batch [20/20] time 0.058 (0.126) data 0.019 (0.024) loss 1.0039 (1.1437) lr 3.5000e-03 eta 0:00:10
+epoch [2/5] batch [20/20] time 0.041 (0.041) data 0.005 (0.005) loss 0.5260 (1.0080) lr 3.1658e-03 eta 0:00:02
+epoch [3/5] batch [20/20] time 0.043 (0.041) data 0.005 (0.004) loss 0.2785 (0.4898) lr 2.2908e-03 eta 0:00:01
+epoch [4/5] batch [20/20] time 0.035 (0.040) data 0.004 (0.004) loss 0.0206 (0.3448) lr 1.2092e-03 eta 0:00:00
+epoch [5/5] batch [20/20] time 0.039 (0.041) data 0.004 (0.004) loss 0.0060 (0.2779) lr 3.3422e-04 eta 0:00:00
+Checkpoint saved to output/ablation/dapr_depth7_gamma0_lambda01/seed1\MultiModalPromptLearner\model.pth.tar-5
+Finish training
+Deploy the last-epoch model
+Evaluate on the *test* set
+  0%|          | 0/42 [00:00<?, ?it/s]  2%|2         | 1/42 [00:00<00:30,  1.34it/s]  5%|4         | 2/42 [00:01<00:27,  1.47it/s]  7%|7         | 3/42 [00:02<00:25,  1.51it/s] 10%|9         | 4/42 [00:02<00:24,  1.58it/s] 12%|#1        | 5/42 [00:03<00:23,  1.61it/s] 14%|#4        | 6/42 [00:03<00:22,  1.61it/s] 17%|#6        | 7/42 [00:04<00:21,  1.61it/s] 19%|#9        | 8/42 [00:05<00:21,  1.61it/s] 21%|##1       | 9/42 [00:05<00:20,  1.60it/s] 24%|##3       | 10/42 [00:06<00:20,  1.60it/s] 26%|##6       | 11/42 [00:06<00:19,  1.61it/s] 29%|##8       | 12/42 [00:07<00:19,  1.57it/s] 31%|###       | 13/42 [00:08<00:18,  1.56it/s] 33%|###3      | 14/42 [00:08<00:17,  1.57it/s] 36%|###5      | 15/42 [00:09<00:17,  1.53it/s] 38%|###8      | 16/42 [00:10<00:16,  1.54it/s] 40%|####      | 17/42 [00:10<00:16,  1.55it/s] 43%|####2     | 18/42 [00:11<00:15,  1.57it/s] 45%|####5     | 19/42 [00:12<00:14,  1.58it/s] 48%|####7     | 20/42 [00:12<00:14,  1.54it/s] 50%|#####     | 21/42 [00:13<00:13,  1.56it/s] 52%|#####2    | 22/42 [00:14<00:12,  1.56it/s] 55%|#####4    | 23/42 [00:14<00:12,  1.58it/s] 57%|#####7    | 24/42 [00:15<00:11,  1.57it/s] 60%|#####9    | 25/42 [00:16<00:11,  1.53it/s] 62%|######1   | 26/42 [00:16<00:10,  1.51it/s] 64%|######4   | 27/42 [00:17<00:10,  1.50it/s] 67%|######6   | 28/42 [00:18<00:09,  1.49it/s] 69%|######9   | 29/42 [00:18<00:08,  1.51it/s] 71%|#######1  | 30/42 [00:19<00:07,  1.53it/s] 74%|#######3  | 31/42 [00:19<00:07,  1.53it/s] 76%|#######6  | 32/42 [00:20<00:06,  1.53it/s] 79%|#######8  | 33/42 [00:21<00:05,  1.51it/s] 81%|########  | 34/42 [00:21<00:05,  1.52it/s] 83%|########3 | 35/42 [00:22<00:04,  1.55it/s] 86%|########5 | 36/42 [00:23<00:03,  1.56it/s] 88%|########8 | 37/42 [00:23<00:03,  1.56it/s] 90%|######### | 38/42 [00:24<00:02,  1.58it/s] 93%|#########2| 39/42 [00:25<00:01,  1.57it/s] 95%|#########5| 40/42 [00:25<00:01,  1.58it/s] 98%|#########7| 41/42 [00:26<00:00,  1.59it/s]100%|##########| 42/42 [00:27<00:00,  1.56it/s]100%|##########| 42/42 [00:27<00:00,  1.55it/s]
+=> result
+* total: 4,200
+* correct: 3,971
+* accuracy: 94.5%
+* error: 5.5%
+* macro_f1: 94.4%
+Elapsed: 0:00:33
+Setting fixed seed: 1
+***************
+** Arguments **
+***************
+backbone: 
+config_file: configs/trainers/MaPLe/vit_b16_c2_ep5_batch4_2ctx.yaml
+dataset_config_file: configs/datasets/eurosat.yaml
+eval_only: True
+head: 
+load_epoch: 5
+model_dir: output/ablation/dapr_depth7_gamma0_lambda01/seed1
+no_train: False
+opts: ['DATASET.NUM_SHOTS', '16', 'DATASET.SUBSAMPLE_CLASSES', 'new', 'DATALOADER.NUM_WORKERS', '0', 'TRAINER.MAPLE.PROMPT_DEPTH', '7']
+output_dir: output/ablation/dapr_depth7_gamma0_lambda01/seed1_novel_eval
+resume: 
+root: E:\Codes\yzm5110\datasets
+seed: 1
+source_domains: None
+target_domains: None
+trainer: MaPLe
+transforms: None
+************
+** Config **
+************
+DATALOADER:
+  K_TRANSFORMS: 1
+  NUM_WORKERS: 0
+  RETURN_IMG0: False
+  TEST:
+    BATCH_SIZE: 100
+    SAMPLER: SequentialSampler
+  TRAIN_U:
+    BATCH_SIZE: 32
+    N_DOMAIN: 0
+    N_INS: 16
+    SAME_AS_X: True
+    SAMPLER: RandomSampler
+  TRAIN_X:
+    BATCH_SIZE: 4
+    N_DOMAIN: 0
+    N_INS: 16
+    SAMPLER: RandomSampler
+DATASET:
+  ALL_AS_UNLABELED: False
+  CIFAR_C_LEVEL: 1
+  CIFAR_C_TYPE: 
+  NAME: EuroSAT
+  NUM_LABELED: -1
+  NUM_SHOTS: 16
+  ROOT: E:\Codes\yzm5110\datasets
+  SOURCE_DOMAINS: ()
+  STL10_FOLD: -1
+  SUBSAMPLE_CLASSES: new
+  TARGET_DOMAINS: ()
+  VAL_PERCENT: 0.1
+INPUT:
+  COLORJITTER_B: 0.4
+  COLORJITTER_C: 0.4
+  COLORJITTER_H: 0.1
+  COLORJITTER_S: 0.4
+  CROP_PADDING: 4
+  CUTOUT_LEN: 16
+  CUTOUT_N: 1
+  GB_K: 21
+  GB_P: 0.5
+  GN_MEAN: 0.0
+  GN_STD: 0.15
+  INTERPOLATION: bicubic
+  NO_TRANSFORM: False
+  PIXEL_MEAN: [0.48145466, 0.4578275, 0.40821073]
+  PIXEL_STD: [0.26862954, 0.26130258, 0.27577711]
+  RANDAUGMENT_M: 10
+  RANDAUGMENT_N: 2
+  RGS_P: 0.2
+  RRCROP_SCALE: (0.08, 1.0)
+  SIZE: (224, 224)
+  TRANSFORMS: ('random_resized_crop', 'random_flip', 'normalize')
+MODEL:
+  BACKBONE:
+    NAME: ViT-B/16
+    PRETRAINED: True
+  HEAD:
+    ACTIVATION: relu
+    BN: True
+    DROPOUT: 0.0
+    HIDDEN_LAYERS: ()
+    NAME: 
+  INIT_WEIGHTS: 
+OPTIM:
+  ADAM_BETA1: 0.9
+  ADAM_BETA2: 0.999
+  BASE_LR_MULT: 0.1
+  GAMMA: 0.1
+  LR: 0.0035
+  LR_SCHEDULER: cosine
+  MAX_EPOCH: 5
+  MOMENTUM: 0.9
+  NAME: sgd
+  NEW_LAYERS: ()
+  RMSPROP_ALPHA: 0.99
+  SGD_DAMPNING: 0
+  SGD_NESTEROV: False
+  STAGED_LR: False
+  STEPSIZE: (-1,)
+  WARMUP_CONS_LR: 1e-05
+  WARMUP_EPOCH: 1
+  WARMUP_MIN_LR: 1e-05
+  WARMUP_RECOUNT: True
+  WARMUP_TYPE: constant
+  WEIGHT_DECAY: 0.0005
+OUTPUT_DIR: output/ablation/dapr_depth7_gamma0_lambda01/seed1_novel_eval
+RESUME: 
+SEED: 1
+TEST:
+  COMPUTE_CMAT: False
+  EVALUATOR: Classification
+  FINAL_MODEL: last_step
+  NO_TEST: False
+  PER_CLASS_RESULT: False
+  SPLIT: test
+TRAIN:
+  CHECKPOINT_FREQ: 0
+  COUNT_ITER: train_x
+  PRINT_FREQ: 20
+TRAINER:
+  CDAC:
+    CLASS_LR_MULTI: 10
+    P_THRESH: 0.95
+    RAMPUP_COEF: 30
+    RAMPUP_ITRS: 1000
+    STRONG_TRANSFORMS: ()
+    TOPK_MATCH: 5
+  COCOOP:
+    CTX_INIT: 
+    N_CTX: 16
+    PREC: fp16
+  COOP:
+    CLASS_TOKEN_POSITION: end
+    CSC: False
+    CTX_INIT: 
+    N_CTX: 16
+    PREC: fp16
+  CROSSGRAD:
+    ALPHA_D: 0.5
+    ALPHA_F: 0.5
+    EPS_D: 1.0
+    EPS_F: 1.0
+  DAEL:
+    CONF_THRE: 0.95
+    STRONG_TRANSFORMS: ()
+    WEIGHT_U: 0.5
+  DAELDG:
+    CONF_THRE: 0.95
+    STRONG_TRANSFORMS: ()
+    WEIGHT_U: 0.5
+  DDAIG:
+    ALPHA: 0.5
+    CLAMP: False
+    CLAMP_MAX: 1.0
+    CLAMP_MIN: -1.0
+    G_ARCH: 
+    LMDA: 0.3
+    WARMUP: 0
+  DOMAINMIX:
+    ALPHA: 1.0
+    BETA: 1.0
+    TYPE: crossdomain
+  ENTMIN:
+    LMDA: 0.001
+  FIXMATCH:
+    CONF_THRE: 0.95
+    STRONG_TRANSFORMS: ()
+    WEIGHT_U: 1.0
+  IVLP:
+    CTX_INIT: a photo of a
+    N_CTX_TEXT: 2
+    N_CTX_VISION: 2
+    PREC: fp16
+    PROMPT_DEPTH_TEXT: 9
+    PROMPT_DEPTH_VISION: 9
+  M3SDA:
+    LMDA: 0.5
+    N_STEP_F: 4
+  MAPLE:
+    CTX_INIT: a photo of a
+    N_CTX: 2
+    PREC: fp16
+    PROMPT_DEPTH: 7
+  MCD:
+    N_STEP_F: 4
+  MEANTEACHER:
+    EMA_ALPHA: 0.999
+    RAMPUP: 5
+    WEIGHT_U: 1.0
+  MIXMATCH:
+    MIXUP_BETA: 0.75
+    RAMPUP: 20000
+    TEMP: 2.0
+    WEIGHT_U: 100.0
+  MME:
+    LMDA: 0.1
+  NAME: MaPLe
+  SE:
+    CONF_THRE: 0.95
+    EMA_ALPHA: 0.999
+    RAMPUP: 300
+  VPT:
+    CTX_INIT: a photo of a
+    N_CTX_VISION: 2
+    PREC: fp16
+    PROMPT_DEPTH_VISION: 1
+USE_CUDA: True
+VERBOSE: True
+VERSION: 1
+Collecting env info ...
+** System info **
+PyTorch version: 2.11.0+cu128
+Is debug build: False
+CUDA used to build PyTorch: 12.8
+ROCM used to build PyTorch: N/A
+
+OS: Microsoft Windows 11 Pro (10.0.26300 64-bit)
+GCC version: Could not collect
+Clang version: Could not collect
+CMake version: Could not collect
+Libc version: N/A
+
+Python version: 3.10.20 | packaged by Anaconda, Inc. | (main, Jun 11 2026, 15:13:20) [MSC v.1942 64 bit (AMD64)] (64-bit runtime)
+Python platform: Windows-10-10.0.26300-SP0
+Is CUDA available: True
+CUDA runtime version: Could not collect
+CUDA_MODULE_LOADING set to: 
+GPU models and configuration: GPU 0: NVIDIA GeForce RTX 5070 Ti Laptop GPU
+Nvidia driver version: Could not collect
+cuDNN version: Could not collect
+Is XPU available: False
+HIP runtime version: N/A
+MIOpen runtime version: N/A
+Is XNNPACK available: True
+Caching allocator config: N/A
+
+CPU:
+Name: AMD Ryzen 9 9955HX 16-Core Processor           
+Manufacturer: AuthenticAMD
+Family: 107
+Architecture: 9
+ProcessorType: 3
+DeviceID: CPU0
+CurrentClockSpeed: 2500
+MaxClockSpeed: 2500
+L2CacheSize: 16384
+L2CacheSpeed: None
+Revision: 17408
+
+Versions of relevant libraries:
+[pip3] flake8==7.4.1
+[pip3] mypy_extensions==1.2.0
+[pip3] numpy==1.26.4
+[pip3] torch==2.11.0+cu128
+[pip3] torchvision==0.26.0+cu128
+[conda] numpy                      1.26.4           pypi_0           pypi
+[conda] torch                      2.11.0+cu128     pypi_0           pypi
+[conda] torchvision                0.26.0+cu128     pypi_0           pypi
+        Pillow (12.3.0)
+
+Loading trainer: MaPLe
+Loading dataset: EuroSAT
+Reading split from E:\Codes\yzm5110\datasets\eurosat\split_zhou_EuroSAT.json
+Loading preprocessed few-shot data from E:\Codes\yzm5110\datasets\eurosat\split_fewshot\shot_16-seed_1.pkl
+SUBSAMPLE NEW CLASSES!
+Building transform_train
++ random resized crop (size=(224, 224), scale=(0.08, 1.0))
++ random flip
++ to torch tensor of range [0, 1]
++ normalization (mean=[0.48145466, 0.4578275, 0.40821073], std=[0.26862954, 0.26130258, 0.27577711])
+Building transform_test
++ resize the smaller edge to 224
++ 224x224 center crop
++ to torch tensor of range [0, 1]
++ normalization (mean=[0.48145466, 0.4578275, 0.40821073], std=[0.26862954, 0.26130258, 0.27577711])
+---------  -------
+Dataset    EuroSAT
+# classes  5
+# train_x  80
+# val      20
+# test     3,900
+---------  -------
+Loading CLIP (backbone: ViT-B/16)
+Building custom CLIP
+MaPLe design: Multi-modal Prompt Learning
+Initial context: "a photo of a"
+Number of MaPLe context words (tokens): 2
+DAPR: lambda=0.1, gamma=0.0
+Turning off gradients in both the image and the text encoder
+Parameters to be updated: {'prompt_learner.compound_prompt_projections.1.weight', 'prompt_learner.compound_prompt_projections.4.weight', 'prompt_learner.compound_prompt_projections.4.bias', 'prompt_learner.compound_prompts_text.5', 'prompt_learner.compound_prompt_projections.5.weight', 'prompt_learner.ctx', 'prompt_learner.compound_prompts_text.0', 'prompt_learner.compound_prompt_projections.3.weight', 'prompt_learner.proj.bias', 'prompt_learner.compound_prompts_text.3', 'prompt_learner.compound_prompt_projections.0.weight', 'prompt_learner.compound_prompt_projections.0.bias', 'prompt_learner.compound_prompts_text.1', 'prompt_learner.compound_prompts_text.4', 'prompt_learner.compound_prompt_projections.2.bias', 'prompt_learner.compound_prompts_text.2', 'prompt_learner.proj.weight', 'prompt_learner.compound_prompt_projections.1.bias', 'prompt_learner.compound_prompt_projections.5.bias', 'prompt_learner.compound_prompt_projections.2.weight', 'prompt_learner.compound_prompt_projections.3.bias'}
+Loading evaluator: Classification
+Loading weights to MultiModalPromptLearner from "output/ablation/dapr_depth7_gamma0_lambda01/seed1\MultiModalPromptLearner\model.pth.tar-5" (epoch = 5)
+Evaluate on the *test* set
+  0%|          | 0/39 [00:00<?, ?it/s]  3%|2         | 1/39 [00:01<00:50,  1.33s/it]  5%|5         | 2/39 [00:01<00:34,  1.07it/s]  8%|7         | 3/39 [00:02<00:29,  1.24it/s] 10%|#         | 4/39 [00:03<00:25,  1.37it/s] 13%|#2        | 5/39 [00:03<00:23,  1.46it/s] 15%|#5        | 6/39 [00:04<00:21,  1.52it/s] 18%|#7        | 7/39 [00:05<00:20,  1.56it/s] 21%|##        | 8/39 [00:05<00:19,  1.59it/s] 23%|##3       | 9/39 [00:06<00:18,  1.61it/s] 26%|##5       | 10/39 [00:06<00:18,  1.60it/s] 28%|##8       | 11/39 [00:07<00:17,  1.61it/s] 31%|###       | 12/39 [00:08<00:16,  1.61it/s] 33%|###3      | 13/39 [00:08<00:16,  1.61it/s] 36%|###5      | 14/39 [00:09<00:15,  1.57it/s] 38%|###8      | 15/39 [00:10<00:15,  1.57it/s] 41%|####1     | 16/39 [00:10<00:14,  1.58it/s] 44%|####3     | 17/39 [00:11<00:14,  1.55it/s] 46%|####6     | 18/39 [00:12<00:13,  1.57it/s] 49%|####8     | 19/39 [00:12<00:12,  1.57it/s] 51%|#####1    | 20/39 [00:13<00:12,  1.58it/s] 54%|#####3    | 21/39 [00:13<00:11,  1.61it/s] 56%|#####6    | 22/39 [00:14<00:10,  1.59it/s] 59%|#####8    | 23/39 [00:15<00:10,  1.60it/s] 62%|######1   | 24/39 [00:15<00:09,  1.60it/s] 64%|######4   | 25/39 [00:16<00:08,  1.60it/s] 67%|######6   | 26/39 [00:17<00:08,  1.59it/s] 69%|######9   | 27/39 [00:17<00:07,  1.57it/s] 72%|#######1  | 28/39 [00:18<00:06,  1.58it/s] 74%|#######4  | 29/39 [00:18<00:06,  1.55it/s] 77%|#######6  | 30/39 [00:19<00:05,  1.53it/s] 79%|#######9  | 31/39 [00:20<00:05,  1.53it/s] 82%|########2 | 32/39 [00:20<00:04,  1.52it/s] 85%|########4 | 33/39 [00:21<00:03,  1.53it/s] 87%|########7 | 34/39 [00:22<00:03,  1.55it/s] 90%|########9 | 35/39 [00:22<00:02,  1.56it/s] 92%|#########2| 36/39 [00:23<00:01,  1.56it/s] 95%|#########4| 37/39 [00:24<00:01,  1.56it/s] 97%|#########7| 38/39 [00:24<00:00,  1.57it/s]100%|##########| 39/39 [00:25<00:00,  1.58it/s]100%|##########| 39/39 [00:25<00:00,  1.54it/s]
+=> result
+* total: 3,900
+* correct: 3,104
+* accuracy: 79.6%
+* error: 20.4%
+* macro_f1: 77.0%
+Setting fixed seed: 2
+***************
+** Arguments **
+***************
+backbone: 
+config_file: configs/trainers/MaPLe/vit_b16_c2_ep5_batch4_2ctx.yaml
+dataset_config_file: configs/datasets/eurosat.yaml
+eval_only: False
+head: 
+load_epoch: None
+model_dir: 
+no_train: False
+opts: ['DATASET.NUM_SHOTS', '16', 'DATASET.SUBSAMPLE_CLASSES', 'base', 'DATALOADER.NUM_WORKERS', '0', 'TRAINER.MAPLE.PROMPT_DEPTH', '7']
+output_dir: output/ablation/dapr_depth7_gamma0_lambda01/seed2
+resume: 
+root: E:\Codes\yzm5110\datasets
+seed: 2
+source_domains: None
+target_domains: None
+trainer: MaPLe
+transforms: None
+************
+** Config **
+************
+DATALOADER:
+  K_TRANSFORMS: 1
+  NUM_WORKERS: 0
+  RETURN_IMG0: False
+  TEST:
+    BATCH_SIZE: 100
+    SAMPLER: SequentialSampler
+  TRAIN_U:
+    BATCH_SIZE: 32
+    N_DOMAIN: 0
+    N_INS: 16
+    SAME_AS_X: True
+    SAMPLER: RandomSampler
+  TRAIN_X:
+    BATCH_SIZE: 4
+    N_DOMAIN: 0
+    N_INS: 16
+    SAMPLER: RandomSampler
+DATASET:
+  ALL_AS_UNLABELED: False
+  CIFAR_C_LEVEL: 1
+  CIFAR_C_TYPE: 
+  NAME: EuroSAT
+  NUM_LABELED: -1
+  NUM_SHOTS: 16
+  ROOT: E:\Codes\yzm5110\datasets
+  SOURCE_DOMAINS: ()
+  STL10_FOLD: -1
+  SUBSAMPLE_CLASSES: base
+  TARGET_DOMAINS: ()
+  VAL_PERCENT: 0.1
+INPUT:
+  COLORJITTER_B: 0.4
+  COLORJITTER_C: 0.4
+  COLORJITTER_H: 0.1
+  COLORJITTER_S: 0.4
+  CROP_PADDING: 4
+  CUTOUT_LEN: 16
+  CUTOUT_N: 1
+  GB_K: 21
+  GB_P: 0.5
+  GN_MEAN: 0.0
+  GN_STD: 0.15
+  INTERPOLATION: bicubic
+  NO_TRANSFORM: False
+  PIXEL_MEAN: [0.48145466, 0.4578275, 0.40821073]
+  PIXEL_STD: [0.26862954, 0.26130258, 0.27577711]
+  RANDAUGMENT_M: 10
+  RANDAUGMENT_N: 2
+  RGS_P: 0.2
+  RRCROP_SCALE: (0.08, 1.0)
+  SIZE: (224, 224)
+  TRANSFORMS: ('random_resized_crop', 'random_flip', 'normalize')
+MODEL:
+  BACKBONE:
+    NAME: ViT-B/16
+    PRETRAINED: True
+  HEAD:
+    ACTIVATION: relu
+    BN: True
+    DROPOUT: 0.0
+    HIDDEN_LAYERS: ()
+    NAME: 
+  INIT_WEIGHTS: 
+OPTIM:
+  ADAM_BETA1: 0.9
+  ADAM_BETA2: 0.999
+  BASE_LR_MULT: 0.1
+  GAMMA: 0.1
+  LR: 0.0035
+  LR_SCHEDULER: cosine
+  MAX_EPOCH: 5
+  MOMENTUM: 0.9
+  NAME: sgd
+  NEW_LAYERS: ()
+  RMSPROP_ALPHA: 0.99
+  SGD_DAMPNING: 0
+  SGD_NESTEROV: False
+  STAGED_LR: False
+  STEPSIZE: (-1,)
+  WARMUP_CONS_LR: 1e-05
+  WARMUP_EPOCH: 1
+  WARMUP_MIN_LR: 1e-05
+  WARMUP_RECOUNT: True
+  WARMUP_TYPE: constant
+  WEIGHT_DECAY: 0.0005
+OUTPUT_DIR: output/ablation/dapr_depth7_gamma0_lambda01/seed2
+RESUME: 
+SEED: 2
+TEST:
+  COMPUTE_CMAT: False
+  EVALUATOR: Classification
+  FINAL_MODEL: last_step
+  NO_TEST: False
+  PER_CLASS_RESULT: False
+  SPLIT: test
+TRAIN:
+  CHECKPOINT_FREQ: 0
+  COUNT_ITER: train_x
+  PRINT_FREQ: 20
+TRAINER:
+  CDAC:
+    CLASS_LR_MULTI: 10
+    P_THRESH: 0.95
+    RAMPUP_COEF: 30
+    RAMPUP_ITRS: 1000
+    STRONG_TRANSFORMS: ()
+    TOPK_MATCH: 5
+  COCOOP:
+    CTX_INIT: 
+    N_CTX: 16
+    PREC: fp16
+  COOP:
+    CLASS_TOKEN_POSITION: end
+    CSC: False
+    CTX_INIT: 
+    N_CTX: 16
+    PREC: fp16
+  CROSSGRAD:
+    ALPHA_D: 0.5
+    ALPHA_F: 0.5
+    EPS_D: 1.0
+    EPS_F: 1.0
+  DAEL:
+    CONF_THRE: 0.95
+    STRONG_TRANSFORMS: ()
+    WEIGHT_U: 0.5
+  DAELDG:
+    CONF_THRE: 0.95
+    STRONG_TRANSFORMS: ()
+    WEIGHT_U: 0.5
+  DDAIG:
+    ALPHA: 0.5
+    CLAMP: False
+    CLAMP_MAX: 1.0
+    CLAMP_MIN: -1.0
+    G_ARCH: 
+    LMDA: 0.3
+    WARMUP: 0
+  DOMAINMIX:
+    ALPHA: 1.0
+    BETA: 1.0
+    TYPE: crossdomain
+  ENTMIN:
+    LMDA: 0.001
+  FIXMATCH:
+    CONF_THRE: 0.95
+    STRONG_TRANSFORMS: ()
+    WEIGHT_U: 1.0
+  IVLP:
+    CTX_INIT: a photo of a
+    N_CTX_TEXT: 2
+    N_CTX_VISION: 2
+    PREC: fp16
+    PROMPT_DEPTH_TEXT: 9
+    PROMPT_DEPTH_VISION: 9
+  M3SDA:
+    LMDA: 0.5
+    N_STEP_F: 4
+  MAPLE:
+    CTX_INIT: a photo of a
+    N_CTX: 2
+    PREC: fp16
+    PROMPT_DEPTH: 7
+  MCD:
+    N_STEP_F: 4
+  MEANTEACHER:
+    EMA_ALPHA: 0.999
+    RAMPUP: 5
+    WEIGHT_U: 1.0
+  MIXMATCH:
+    MIXUP_BETA: 0.75
+    RAMPUP: 20000
+    TEMP: 2.0
+    WEIGHT_U: 100.0
+  MME:
+    LMDA: 0.1
+  NAME: MaPLe
+  SE:
+    CONF_THRE: 0.95
+    EMA_ALPHA: 0.999
+    RAMPUP: 300
+  VPT:
+    CTX_INIT: a photo of a
+    N_CTX_VISION: 2
+    PREC: fp16
+    PROMPT_DEPTH_VISION: 1
+USE_CUDA: True
+VERBOSE: True
+VERSION: 1
+Collecting env info ...
+** System info **
+PyTorch version: 2.11.0+cu128
+Is debug build: False
+CUDA used to build PyTorch: 12.8
+ROCM used to build PyTorch: N/A
+
+OS: Microsoft Windows 11 Pro (10.0.26300 64-bit)
+GCC version: Could not collect
+Clang version: Could not collect
+CMake version: Could not collect
+Libc version: N/A
+
+Python version: 3.10.20 | packaged by Anaconda, Inc. | (main, Jun 11 2026, 15:13:20) [MSC v.1942 64 bit (AMD64)] (64-bit runtime)
+Python platform: Windows-10-10.0.26300-SP0
+Is CUDA available: True
+CUDA runtime version: Could not collect
+CUDA_MODULE_LOADING set to: 
+GPU models and configuration: GPU 0: NVIDIA GeForce RTX 5070 Ti Laptop GPU
+Nvidia driver version: Could not collect
+cuDNN version: Could not collect
+Is XPU available: False
+HIP runtime version: N/A
+MIOpen runtime version: N/A
+Is XNNPACK available: True
+Caching allocator config: N/A
+
+CPU:
+Name: AMD Ryzen 9 9955HX 16-Core Processor           
+Manufacturer: AuthenticAMD
+Family: 107
+Architecture: 9
+ProcessorType: 3
+DeviceID: CPU0
+CurrentClockSpeed: 2500
+MaxClockSpeed: 2500
+L2CacheSize: 16384
+L2CacheSpeed: None
+Revision: 17408
+
+Versions of relevant libraries:
+[pip3] flake8==7.4.1
+[pip3] mypy_extensions==1.2.0
+[pip3] numpy==1.26.4
+[pip3] torch==2.11.0+cu128
+[pip3] torchvision==0.26.0+cu128
+[conda] numpy                      1.26.4           pypi_0           pypi
+[conda] torch                      2.11.0+cu128     pypi_0           pypi
+[conda] torchvision                0.26.0+cu128     pypi_0           pypi
+        Pillow (12.3.0)
+
+Loading trainer: MaPLe
+Loading dataset: EuroSAT
+Reading split from E:\Codes\yzm5110\datasets\eurosat\split_zhou_EuroSAT.json
+Loading preprocessed few-shot data from E:\Codes\yzm5110\datasets\eurosat\split_fewshot\shot_16-seed_2.pkl
+SUBSAMPLE BASE CLASSES!
+Building transform_train
++ random resized crop (size=(224, 224), scale=(0.08, 1.0))
++ random flip
++ to torch tensor of range [0, 1]
++ normalization (mean=[0.48145466, 0.4578275, 0.40821073], std=[0.26862954, 0.26130258, 0.27577711])
+Building transform_test
++ resize the smaller edge to 224
++ 224x224 center crop
++ to torch tensor of range [0, 1]
++ normalization (mean=[0.48145466, 0.4578275, 0.40821073], std=[0.26862954, 0.26130258, 0.27577711])
+---------  -------
+Dataset    EuroSAT
+# classes  5
+# train_x  80
+# val      20
+# test     4,200
+---------  -------
+Loading CLIP (backbone: ViT-B/16)
+Building custom CLIP
+MaPLe design: Multi-modal Prompt Learning
+Initial context: "a photo of a"
+Number of MaPLe context words (tokens): 2
+DAPR: lambda=0.1, gamma=0.0
+Turning off gradients in both the image and the text encoder
+Parameters to be updated: {'prompt_learner.compound_prompt_projections.5.bias', 'prompt_learner.compound_prompts_text.0', 'prompt_learner.compound_prompt_projections.0.bias', 'prompt_learner.compound_prompt_projections.1.weight', 'prompt_learner.compound_prompt_projections.4.bias', 'prompt_learner.compound_prompts_text.1', 'prompt_learner.compound_prompts_text.2', 'prompt_learner.ctx', 'prompt_learner.compound_prompts_text.5', 'prompt_learner.compound_prompt_projections.3.bias', 'prompt_learner.compound_prompts_text.3', 'prompt_learner.compound_prompt_projections.2.bias', 'prompt_learner.compound_prompts_text.4', 'prompt_learner.compound_prompt_projections.0.weight', 'prompt_learner.proj.weight', 'prompt_learner.compound_prompt_projections.4.weight', 'prompt_learner.compound_prompt_projections.5.weight', 'prompt_learner.proj.bias', 'prompt_learner.compound_prompt_projections.1.bias', 'prompt_learner.compound_prompt_projections.3.weight', 'prompt_learner.compound_prompt_projections.2.weight'}
+Loading evaluator: Classification
+No checkpoint found, train from scratch
+Initialize tensorboard (log_dir=output/ablation/dapr_depth7_gamma0_lambda01/seed2\tensorboard)
+epoch [1/5] batch [20/20] time 0.066 (0.141) data 0.026 (0.026) loss 1.4883 (1.2847) lr 3.5000e-03 eta 0:00:11
+epoch [2/5] batch [20/20] time 0.044 (0.043) data 0.005 (0.005) loss 1.0666 (1.2352) lr 3.1658e-03 eta 0:00:02
+epoch [3/5] batch [20/20] time 0.042 (0.044) data 0.005 (0.005) loss 0.6189 (0.8404) lr 2.2908e-03 eta 0:00:01
+epoch [4/5] batch [20/20] time 0.044 (0.045) data 0.004 (0.005) loss 0.4856 (0.8007) lr 1.2092e-03 eta 0:00:00
+epoch [5/5] batch [20/20] time 0.046 (0.045) data 0.006 (0.005) loss 0.0448 (0.3881) lr 3.3422e-04 eta 0:00:00
+Checkpoint saved to output/ablation/dapr_depth7_gamma0_lambda01/seed2\MultiModalPromptLearner\model.pth.tar-5
+Finish training
+Deploy the last-epoch model
+Evaluate on the *test* set
+  0%|          | 0/42 [00:00<?, ?it/s]  2%|2         | 1/42 [00:00<00:15,  2.65it/s]  5%|4         | 2/42 [00:00<00:12,  3.25it/s]  7%|7         | 3/42 [00:00<00:10,  3.63it/s] 10%|9         | 4/42 [00:01<00:09,  3.87it/s] 12%|#1        | 5/42 [00:01<00:09,  4.05it/s] 14%|#4        | 6/42 [00:01<00:08,  4.11it/s] 17%|#6        | 7/42 [00:01<00:08,  4.14it/s] 19%|#9        | 8/42 [00:02<00:08,  4.15it/s] 21%|##1       | 9/42 [00:02<00:08,  4.11it/s] 24%|##3       | 10/42 [00:02<00:07,  4.10it/s] 26%|##6       | 11/42 [00:02<00:07,  4.10it/s] 29%|##8       | 12/42 [00:03<00:07,  4.06it/s] 31%|###       | 13/42 [00:03<00:07,  4.07it/s] 33%|###3      | 14/42 [00:03<00:06,  4.10it/s] 36%|###5      | 15/42 [00:03<00:06,  4.09it/s] 38%|###8      | 16/42 [00:04<00:06,  4.10it/s] 40%|####      | 17/42 [00:04<00:06,  4.07it/s] 43%|####2     | 18/42 [00:04<00:05,  4.06it/s] 45%|####5     | 19/42 [00:04<00:05,  4.06it/s] 48%|####7     | 20/42 [00:04<00:05,  4.06it/s] 50%|#####     | 21/42 [00:05<00:05,  4.06it/s] 52%|#####2    | 22/42 [00:05<00:04,  4.07it/s] 55%|#####4    | 23/42 [00:05<00:04,  4.07it/s] 57%|#####7    | 24/42 [00:05<00:04,  4.07it/s] 60%|#####9    | 25/42 [00:06<00:04,  4.08it/s] 62%|######1   | 26/42 [00:06<00:03,  4.10it/s] 64%|######4   | 27/42 [00:06<00:03,  4.11it/s] 67%|######6   | 28/42 [00:06<00:03,  4.13it/s] 69%|######9   | 29/42 [00:07<00:03,  4.14it/s] 71%|#######1  | 30/42 [00:07<00:02,  4.11it/s] 74%|#######3  | 31/42 [00:07<00:02,  4.09it/s] 76%|#######6  | 32/42 [00:07<00:02,  4.09it/s] 79%|#######8  | 33/42 [00:08<00:02,  4.11it/s] 81%|########  | 34/42 [00:08<00:01,  4.10it/s] 83%|########3 | 35/42 [00:08<00:01,  4.11it/s] 86%|########5 | 36/42 [00:08<00:01,  4.13it/s] 88%|########8 | 37/42 [00:09<00:01,  4.09it/s] 90%|######### | 38/42 [00:09<00:00,  4.06it/s] 93%|#########2| 39/42 [00:09<00:00,  4.06it/s] 95%|#########5| 40/42 [00:09<00:00,  4.05it/s] 98%|#########7| 41/42 [00:10<00:00,  4.08it/s]100%|##########| 42/42 [00:10<00:00,  4.06it/s]100%|##########| 42/42 [00:10<00:00,  4.05it/s]
+=> result
+* total: 4,200
+* correct: 3,777
+* accuracy: 89.9%
+* error: 10.1%
+* macro_f1: 89.9%
+Elapsed: 0:00:17
+Setting fixed seed: 2
+***************
+** Arguments **
+***************
+backbone: 
+config_file: configs/trainers/MaPLe/vit_b16_c2_ep5_batch4_2ctx.yaml
+dataset_config_file: configs/datasets/eurosat.yaml
+eval_only: True
+head: 
+load_epoch: 5
+model_dir: output/ablation/dapr_depth7_gamma0_lambda01/seed2
+no_train: False
+opts: ['DATASET.NUM_SHOTS', '16', 'DATASET.SUBSAMPLE_CLASSES', 'new', 'DATALOADER.NUM_WORKERS', '0', 'TRAINER.MAPLE.PROMPT_DEPTH', '7']
+output_dir: output/ablation/dapr_depth7_gamma0_lambda01/seed2_novel_eval
+resume: 
+root: E:\Codes\yzm5110\datasets
+seed: 2
+source_domains: None
+target_domains: None
+trainer: MaPLe
+transforms: None
+************
+** Config **
+************
+DATALOADER:
+  K_TRANSFORMS: 1
+  NUM_WORKERS: 0
+  RETURN_IMG0: False
+  TEST:
+    BATCH_SIZE: 100
+    SAMPLER: SequentialSampler
+  TRAIN_U:
+    BATCH_SIZE: 32
+    N_DOMAIN: 0
+    N_INS: 16
+    SAME_AS_X: True
+    SAMPLER: RandomSampler
+  TRAIN_X:
+    BATCH_SIZE: 4
+    N_DOMAIN: 0
+    N_INS: 16
+    SAMPLER: RandomSampler
+DATASET:
+  ALL_AS_UNLABELED: False
+  CIFAR_C_LEVEL: 1
+  CIFAR_C_TYPE: 
+  NAME: EuroSAT
+  NUM_LABELED: -1
+  NUM_SHOTS: 16
+  ROOT: E:\Codes\yzm5110\datasets
+  SOURCE_DOMAINS: ()
+  STL10_FOLD: -1
+  SUBSAMPLE_CLASSES: new
+  TARGET_DOMAINS: ()
+  VAL_PERCENT: 0.1
+INPUT:
+  COLORJITTER_B: 0.4
+  COLORJITTER_C: 0.4
+  COLORJITTER_H: 0.1
+  COLORJITTER_S: 0.4
+  CROP_PADDING: 4
+  CUTOUT_LEN: 16
+  CUTOUT_N: 1
+  GB_K: 21
+  GB_P: 0.5
+  GN_MEAN: 0.0
+  GN_STD: 0.15
+  INTERPOLATION: bicubic
+  NO_TRANSFORM: False
+  PIXEL_MEAN: [0.48145466, 0.4578275, 0.40821073]
+  PIXEL_STD: [0.26862954, 0.26130258, 0.27577711]
+  RANDAUGMENT_M: 10
+  RANDAUGMENT_N: 2
+  RGS_P: 0.2
+  RRCROP_SCALE: (0.08, 1.0)
+  SIZE: (224, 224)
+  TRANSFORMS: ('random_resized_crop', 'random_flip', 'normalize')
+MODEL:
+  BACKBONE:
+    NAME: ViT-B/16
+    PRETRAINED: True
+  HEAD:
+    ACTIVATION: relu
+    BN: True
+    DROPOUT: 0.0
+    HIDDEN_LAYERS: ()
+    NAME: 
+  INIT_WEIGHTS: 
+OPTIM:
+  ADAM_BETA1: 0.9
+  ADAM_BETA2: 0.999
+  BASE_LR_MULT: 0.1
+  GAMMA: 0.1
+  LR: 0.0035
+  LR_SCHEDULER: cosine
+  MAX_EPOCH: 5
+  MOMENTUM: 0.9
+  NAME: sgd
+  NEW_LAYERS: ()
+  RMSPROP_ALPHA: 0.99
+  SGD_DAMPNING: 0
+  SGD_NESTEROV: False
+  STAGED_LR: False
+  STEPSIZE: (-1,)
+  WARMUP_CONS_LR: 1e-05
+  WARMUP_EPOCH: 1
+  WARMUP_MIN_LR: 1e-05
+  WARMUP_RECOUNT: True
+  WARMUP_TYPE: constant
+  WEIGHT_DECAY: 0.0005
+OUTPUT_DIR: output/ablation/dapr_depth7_gamma0_lambda01/seed2_novel_eval
+RESUME: 
+SEED: 2
+TEST:
+  COMPUTE_CMAT: False
+  EVALUATOR: Classification
+  FINAL_MODEL: last_step
+  NO_TEST: False
+  PER_CLASS_RESULT: False
+  SPLIT: test
+TRAIN:
+  CHECKPOINT_FREQ: 0
+  COUNT_ITER: train_x
+  PRINT_FREQ: 20
+TRAINER:
+  CDAC:
+    CLASS_LR_MULTI: 10
+    P_THRESH: 0.95
+    RAMPUP_COEF: 30
+    RAMPUP_ITRS: 1000
+    STRONG_TRANSFORMS: ()
+    TOPK_MATCH: 5
+  COCOOP:
+    CTX_INIT: 
+    N_CTX: 16
+    PREC: fp16
+  COOP:
+    CLASS_TOKEN_POSITION: end
+    CSC: False
+    CTX_INIT: 
+    N_CTX: 16
+    PREC: fp16
+  CROSSGRAD:
+    ALPHA_D: 0.5
+    ALPHA_F: 0.5
+    EPS_D: 1.0
+    EPS_F: 1.0
+  DAEL:
+    CONF_THRE: 0.95
+    STRONG_TRANSFORMS: ()
+    WEIGHT_U: 0.5
+  DAELDG:
+    CONF_THRE: 0.95
+    STRONG_TRANSFORMS: ()
+    WEIGHT_U: 0.5
+  DDAIG:
+    ALPHA: 0.5
+    CLAMP: False
+    CLAMP_MAX: 1.0
+    CLAMP_MIN: -1.0
+    G_ARCH: 
+    LMDA: 0.3
+    WARMUP: 0
+  DOMAINMIX:
+    ALPHA: 1.0
+    BETA: 1.0
+    TYPE: crossdomain
+  ENTMIN:
+    LMDA: 0.001
+  FIXMATCH:
+    CONF_THRE: 0.95
+    STRONG_TRANSFORMS: ()
+    WEIGHT_U: 1.0
+  IVLP:
+    CTX_INIT: a photo of a
+    N_CTX_TEXT: 2
+    N_CTX_VISION: 2
+    PREC: fp16
+    PROMPT_DEPTH_TEXT: 9
+    PROMPT_DEPTH_VISION: 9
+  M3SDA:
+    LMDA: 0.5
+    N_STEP_F: 4
+  MAPLE:
+    CTX_INIT: a photo of a
+    N_CTX: 2
+    PREC: fp16
+    PROMPT_DEPTH: 7
+  MCD:
+    N_STEP_F: 4
+  MEANTEACHER:
+    EMA_ALPHA: 0.999
+    RAMPUP: 5
+    WEIGHT_U: 1.0
+  MIXMATCH:
+    MIXUP_BETA: 0.75
+    RAMPUP: 20000
+    TEMP: 2.0
+    WEIGHT_U: 100.0
+  MME:
+    LMDA: 0.1
+  NAME: MaPLe
+  SE:
+    CONF_THRE: 0.95
+    EMA_ALPHA: 0.999
+    RAMPUP: 300
+  VPT:
+    CTX_INIT: a photo of a
+    N_CTX_VISION: 2
+    PREC: fp16
+    PROMPT_DEPTH_VISION: 1
+USE_CUDA: True
+VERBOSE: True
+VERSION: 1
+Collecting env info ...
+** System info **
+PyTorch version: 2.11.0+cu128
+Is debug build: False
+CUDA used to build PyTorch: 12.8
+ROCM used to build PyTorch: N/A
+
+OS: Microsoft Windows 11 Pro (10.0.26300 64-bit)
+GCC version: Could not collect
+Clang version: Could not collect
+CMake version: Could not collect
+Libc version: N/A
+
+Python version: 3.10.20 | packaged by Anaconda, Inc. | (main, Jun 11 2026, 15:13:20) [MSC v.1942 64 bit (AMD64)] (64-bit runtime)
+Python platform: Windows-10-10.0.26300-SP0
+Is CUDA available: True
+CUDA runtime version: Could not collect
+CUDA_MODULE_LOADING set to: 
+GPU models and configuration: GPU 0: NVIDIA GeForce RTX 5070 Ti Laptop GPU
+Nvidia driver version: Could not collect
+cuDNN version: Could not collect
+Is XPU available: False
+HIP runtime version: N/A
+MIOpen runtime version: N/A
+Is XNNPACK available: True
+Caching allocator config: N/A
+
+CPU:
+Name: AMD Ryzen 9 9955HX 16-Core Processor           
+Manufacturer: AuthenticAMD
+Family: 107
+Architecture: 9
+ProcessorType: 3
+DeviceID: CPU0
+CurrentClockSpeed: 2500
+MaxClockSpeed: 2500
+L2CacheSize: 16384
+L2CacheSpeed: None
+Revision: 17408
+
+Versions of relevant libraries:
+[pip3] flake8==7.4.1
+[pip3] mypy_extensions==1.2.0
+[pip3] numpy==1.26.4
+[pip3] torch==2.11.0+cu128
+[pip3] torchvision==0.26.0+cu128
+[conda] numpy                      1.26.4           pypi_0           pypi
+[conda] torch                      2.11.0+cu128     pypi_0           pypi
+[conda] torchvision                0.26.0+cu128     pypi_0           pypi
+        Pillow (12.3.0)
+
+Loading trainer: MaPLe
+Loading dataset: EuroSAT
+Reading split from E:\Codes\yzm5110\datasets\eurosat\split_zhou_EuroSAT.json
+Loading preprocessed few-shot data from E:\Codes\yzm5110\datasets\eurosat\split_fewshot\shot_16-seed_2.pkl
+SUBSAMPLE NEW CLASSES!
+Building transform_train
++ random resized crop (size=(224, 224), scale=(0.08, 1.0))
++ random flip
++ to torch tensor of range [0, 1]
++ normalization (mean=[0.48145466, 0.4578275, 0.40821073], std=[0.26862954, 0.26130258, 0.27577711])
+Building transform_test
++ resize the smaller edge to 224
++ 224x224 center crop
++ to torch tensor of range [0, 1]
++ normalization (mean=[0.48145466, 0.4578275, 0.40821073], std=[0.26862954, 0.26130258, 0.27577711])
+---------  -------
+Dataset    EuroSAT
+# classes  5
+# train_x  80
+# val      20
+# test     3,900
+---------  -------
+Loading CLIP (backbone: ViT-B/16)
+Building custom CLIP
+MaPLe design: Multi-modal Prompt Learning
+Initial context: "a photo of a"
+Number of MaPLe context words (tokens): 2
+DAPR: lambda=0.1, gamma=0.0
+Turning off gradients in both the image and the text encoder
+Parameters to be updated: {'prompt_learner.compound_prompt_projections.0.weight', 'prompt_learner.proj.weight', 'prompt_learner.compound_prompts_text.4', 'prompt_learner.compound_prompt_projections.1.bias', 'prompt_learner.compound_prompt_projections.5.weight', 'prompt_learner.compound_prompts_text.1', 'prompt_learner.compound_prompt_projections.2.bias', 'prompt_learner.proj.bias', 'prompt_learner.compound_prompts_text.0', 'prompt_learner.compound_prompts_text.5', 'prompt_learner.compound_prompt_projections.0.bias', 'prompt_learner.compound_prompt_projections.5.bias', 'prompt_learner.compound_prompt_projections.2.weight', 'prompt_learner.compound_prompt_projections.1.weight', 'prompt_learner.compound_prompt_projections.4.weight', 'prompt_learner.compound_prompt_projections.4.bias', 'prompt_learner.ctx', 'prompt_learner.compound_prompts_text.3', 'prompt_learner.compound_prompts_text.2', 'prompt_learner.compound_prompt_projections.3.bias', 'prompt_learner.compound_prompt_projections.3.weight'}
+Loading evaluator: Classification
+Loading weights to MultiModalPromptLearner from "output/ablation/dapr_depth7_gamma0_lambda01/seed2\MultiModalPromptLearner\model.pth.tar-5" (epoch = 5)
+Evaluate on the *test* set
+  0%|          | 0/39 [00:00<?, ?it/s]  3%|2         | 1/39 [00:01<00:38,  1.01s/it]  5%|5         | 2/39 [00:01<00:20,  1.79it/s]  8%|7         | 3/39 [00:01<00:14,  2.43it/s] 10%|#         | 4/39 [00:01<00:11,  2.93it/s] 13%|#2        | 5/39 [00:01<00:10,  3.31it/s] 15%|#5        | 6/39 [00:02<00:09,  3.60it/s] 18%|#7        | 7/39 [00:02<00:08,  3.79it/s] 21%|##        | 8/39 [00:02<00:07,  3.95it/s] 23%|##3       | 9/39 [00:02<00:07,  4.03it/s] 26%|##5       | 10/39 [00:03<00:07,  4.09it/s] 28%|##8       | 11/39 [00:03<00:06,  4.15it/s] 31%|###       | 12/39 [00:03<00:06,  4.18it/s] 33%|###3      | 13/39 [00:03<00:06,  4.22it/s] 36%|###5      | 14/39 [00:04<00:05,  4.26it/s] 38%|###8      | 15/39 [00:04<00:05,  4.29it/s] 41%|####1     | 16/39 [00:04<00:05,  4.31it/s] 44%|####3     | 17/39 [00:04<00:05,  4.31it/s] 46%|####6     | 18/39 [00:04<00:04,  4.32it/s] 49%|####8     | 19/39 [00:05<00:04,  4.32it/s] 51%|#####1    | 20/39 [00:05<00:04,  4.28it/s] 54%|#####3    | 21/39 [00:05<00:04,  4.23it/s] 56%|#####6    | 22/39 [00:05<00:04,  4.23it/s] 59%|#####8    | 23/39 [00:06<00:03,  4.25it/s] 62%|######1   | 24/39 [00:06<00:03,  4.28it/s] 64%|######4   | 25/39 [00:06<00:03,  4.30it/s] 67%|######6   | 26/39 [00:06<00:03,  4.26it/s] 69%|######9   | 27/39 [00:07<00:02,  4.24it/s] 72%|#######1  | 28/39 [00:07<00:02,  4.22it/s] 74%|#######4  | 29/39 [00:07<00:02,  4.21it/s] 77%|#######6  | 30/39 [00:07<00:02,  4.20it/s] 79%|#######9  | 31/39 [00:08<00:01,  4.21it/s] 82%|########2 | 32/39 [00:08<00:01,  4.21it/s] 85%|########4 | 33/39 [00:08<00:01,  4.20it/s] 87%|########7 | 34/39 [00:08<00:01,  4.19it/s] 90%|########9 | 35/39 [00:09<00:00,  4.18it/s] 92%|#########2| 36/39 [00:09<00:00,  4.18it/s] 95%|#########4| 37/39 [00:09<00:00,  4.16it/s] 97%|#########7| 38/39 [00:09<00:00,  4.15it/s]100%|##########| 39/39 [00:09<00:00,  4.17it/s]100%|##########| 39/39 [00:09<00:00,  3.91it/s]
+=> result
+* total: 3,900
+* correct: 2,665
+* accuracy: 68.3%
+* error: 31.7%
+* macro_f1: 64.6%
+Setting fixed seed: 3
+***************
+** Arguments **
+***************
+backbone: 
+config_file: configs/trainers/MaPLe/vit_b16_c2_ep5_batch4_2ctx.yaml
+dataset_config_file: configs/datasets/eurosat.yaml
+eval_only: False
+head: 
+load_epoch: None
+model_dir: 
+no_train: False
+opts: ['DATASET.NUM_SHOTS', '16', 'DATASET.SUBSAMPLE_CLASSES', 'base', 'DATALOADER.NUM_WORKERS', '0', 'TRAINER.MAPLE.PROMPT_DEPTH', '7']
+output_dir: output/ablation/dapr_depth7_gamma0_lambda01/seed3
+resume: 
+root: E:\Codes\yzm5110\datasets
+seed: 3
+source_domains: None
+target_domains: None
+trainer: MaPLe
+transforms: None
+************
+** Config **
+************
+DATALOADER:
+  K_TRANSFORMS: 1
+  NUM_WORKERS: 0
+  RETURN_IMG0: False
+  TEST:
+    BATCH_SIZE: 100
+    SAMPLER: SequentialSampler
+  TRAIN_U:
+    BATCH_SIZE: 32
+    N_DOMAIN: 0
+    N_INS: 16
+    SAME_AS_X: True
+    SAMPLER: RandomSampler
+  TRAIN_X:
+    BATCH_SIZE: 4
+    N_DOMAIN: 0
+    N_INS: 16
+    SAMPLER: RandomSampler
+DATASET:
+  ALL_AS_UNLABELED: False
+  CIFAR_C_LEVEL: 1
+  CIFAR_C_TYPE: 
+  NAME: EuroSAT
+  NUM_LABELED: -1
+  NUM_SHOTS: 16
+  ROOT: E:\Codes\yzm5110\datasets
+  SOURCE_DOMAINS: ()
+  STL10_FOLD: -1
+  SUBSAMPLE_CLASSES: base
+  TARGET_DOMAINS: ()
+  VAL_PERCENT: 0.1
+INPUT:
+  COLORJITTER_B: 0.4
+  COLORJITTER_C: 0.4
+  COLORJITTER_H: 0.1
+  COLORJITTER_S: 0.4
+  CROP_PADDING: 4
+  CUTOUT_LEN: 16
+  CUTOUT_N: 1
+  GB_K: 21
+  GB_P: 0.5
+  GN_MEAN: 0.0
+  GN_STD: 0.15
+  INTERPOLATION: bicubic
+  NO_TRANSFORM: False
+  PIXEL_MEAN: [0.48145466, 0.4578275, 0.40821073]
+  PIXEL_STD: [0.26862954, 0.26130258, 0.27577711]
+  RANDAUGMENT_M: 10
+  RANDAUGMENT_N: 2
+  RGS_P: 0.2
+  RRCROP_SCALE: (0.08, 1.0)
+  SIZE: (224, 224)
+  TRANSFORMS: ('random_resized_crop', 'random_flip', 'normalize')
+MODEL:
+  BACKBONE:
+    NAME: ViT-B/16
+    PRETRAINED: True
+  HEAD:
+    ACTIVATION: relu
+    BN: True
+    DROPOUT: 0.0
+    HIDDEN_LAYERS: ()
+    NAME: 
+  INIT_WEIGHTS: 
+OPTIM:
+  ADAM_BETA1: 0.9
+  ADAM_BETA2: 0.999
+  BASE_LR_MULT: 0.1
+  GAMMA: 0.1
+  LR: 0.0035
+  LR_SCHEDULER: cosine
+  MAX_EPOCH: 5
+  MOMENTUM: 0.9
+  NAME: sgd
+  NEW_LAYERS: ()
+  RMSPROP_ALPHA: 0.99
+  SGD_DAMPNING: 0
+  SGD_NESTEROV: False
+  STAGED_LR: False
+  STEPSIZE: (-1,)
+  WARMUP_CONS_LR: 1e-05
+  WARMUP_EPOCH: 1
+  WARMUP_MIN_LR: 1e-05
+  WARMUP_RECOUNT: True
+  WARMUP_TYPE: constant
+  WEIGHT_DECAY: 0.0005
+OUTPUT_DIR: output/ablation/dapr_depth7_gamma0_lambda01/seed3
+RESUME: 
+SEED: 3
+TEST:
+  COMPUTE_CMAT: False
+  EVALUATOR: Classification
+  FINAL_MODEL: last_step
+  NO_TEST: False
+  PER_CLASS_RESULT: False
+  SPLIT: test
+TRAIN:
+  CHECKPOINT_FREQ: 0
+  COUNT_ITER: train_x
+  PRINT_FREQ: 20
+TRAINER:
+  CDAC:
+    CLASS_LR_MULTI: 10
+    P_THRESH: 0.95
+    RAMPUP_COEF: 30
+    RAMPUP_ITRS: 1000
+    STRONG_TRANSFORMS: ()
+    TOPK_MATCH: 5
+  COCOOP:
+    CTX_INIT: 
+    N_CTX: 16
+    PREC: fp16
+  COOP:
+    CLASS_TOKEN_POSITION: end
+    CSC: False
+    CTX_INIT: 
+    N_CTX: 16
+    PREC: fp16
+  CROSSGRAD:
+    ALPHA_D: 0.5
+    ALPHA_F: 0.5
+    EPS_D: 1.0
+    EPS_F: 1.0
+  DAEL:
+    CONF_THRE: 0.95
+    STRONG_TRANSFORMS: ()
+    WEIGHT_U: 0.5
+  DAELDG:
+    CONF_THRE: 0.95
+    STRONG_TRANSFORMS: ()
+    WEIGHT_U: 0.5
+  DDAIG:
+    ALPHA: 0.5
+    CLAMP: False
+    CLAMP_MAX: 1.0
+    CLAMP_MIN: -1.0
+    G_ARCH: 
+    LMDA: 0.3
+    WARMUP: 0
+  DOMAINMIX:
+    ALPHA: 1.0
+    BETA: 1.0
+    TYPE: crossdomain
+  ENTMIN:
+    LMDA: 0.001
+  FIXMATCH:
+    CONF_THRE: 0.95
+    STRONG_TRANSFORMS: ()
+    WEIGHT_U: 1.0
+  IVLP:
+    CTX_INIT: a photo of a
+    N_CTX_TEXT: 2
+    N_CTX_VISION: 2
+    PREC: fp16
+    PROMPT_DEPTH_TEXT: 9
+    PROMPT_DEPTH_VISION: 9
+  M3SDA:
+    LMDA: 0.5
+    N_STEP_F: 4
+  MAPLE:
+    CTX_INIT: a photo of a
+    N_CTX: 2
+    PREC: fp16
+    PROMPT_DEPTH: 7
+  MCD:
+    N_STEP_F: 4
+  MEANTEACHER:
+    EMA_ALPHA: 0.999
+    RAMPUP: 5
+    WEIGHT_U: 1.0
+  MIXMATCH:
+    MIXUP_BETA: 0.75
+    RAMPUP: 20000
+    TEMP: 2.0
+    WEIGHT_U: 100.0
+  MME:
+    LMDA: 0.1
+  NAME: MaPLe
+  SE:
+    CONF_THRE: 0.95
+    EMA_ALPHA: 0.999
+    RAMPUP: 300
+  VPT:
+    CTX_INIT: a photo of a
+    N_CTX_VISION: 2
+    PREC: fp16
+    PROMPT_DEPTH_VISION: 1
+USE_CUDA: True
+VERBOSE: True
+VERSION: 1
+Collecting env info ...
+** System info **
+PyTorch version: 2.11.0+cu128
+Is debug build: False
+CUDA used to build PyTorch: 12.8
+ROCM used to build PyTorch: N/A
+
+OS: Microsoft Windows 11 Pro (10.0.26300 64-bit)
+GCC version: Could not collect
+Clang version: Could not collect
+CMake version: Could not collect
+Libc version: N/A
+
+Python version: 3.10.20 | packaged by Anaconda, Inc. | (main, Jun 11 2026, 15:13:20) [MSC v.1942 64 bit (AMD64)] (64-bit runtime)
+Python platform: Windows-10-10.0.26300-SP0
+Is CUDA available: True
+CUDA runtime version: Could not collect
+CUDA_MODULE_LOADING set to: 
+GPU models and configuration: GPU 0: NVIDIA GeForce RTX 5070 Ti Laptop GPU
+Nvidia driver version: Could not collect
+cuDNN version: Could not collect
+Is XPU available: False
+HIP runtime version: N/A
+MIOpen runtime version: N/A
+Is XNNPACK available: True
+Caching allocator config: N/A
+
+CPU:
+Name: AMD Ryzen 9 9955HX 16-Core Processor           
+Manufacturer: AuthenticAMD
+Family: 107
+Architecture: 9
+ProcessorType: 3
+DeviceID: CPU0
+CurrentClockSpeed: 2500
+MaxClockSpeed: 2500
+L2CacheSize: 16384
+L2CacheSpeed: None
+Revision: 17408
+
+Versions of relevant libraries:
+[pip3] flake8==7.4.1
+[pip3] mypy_extensions==1.2.0
+[pip3] numpy==1.26.4
+[pip3] torch==2.11.0+cu128
+[pip3] torchvision==0.26.0+cu128
+[conda] numpy                      1.26.4           pypi_0           pypi
+[conda] torch                      2.11.0+cu128     pypi_0           pypi
+[conda] torchvision                0.26.0+cu128     pypi_0           pypi
+        Pillow (12.3.0)
+
+Loading trainer: MaPLe
+Loading dataset: EuroSAT
+Reading split from E:\Codes\yzm5110\datasets\eurosat\split_zhou_EuroSAT.json
+Loading preprocessed few-shot data from E:\Codes\yzm5110\datasets\eurosat\split_fewshot\shot_16-seed_3.pkl
+SUBSAMPLE BASE CLASSES!
+Building transform_train
++ random resized crop (size=(224, 224), scale=(0.08, 1.0))
++ random flip
++ to torch tensor of range [0, 1]
++ normalization (mean=[0.48145466, 0.4578275, 0.40821073], std=[0.26862954, 0.26130258, 0.27577711])
+Building transform_test
++ resize the smaller edge to 224
++ 224x224 center crop
++ to torch tensor of range [0, 1]
++ normalization (mean=[0.48145466, 0.4578275, 0.40821073], std=[0.26862954, 0.26130258, 0.27577711])
+---------  -------
+Dataset    EuroSAT
+# classes  5
+# train_x  80
+# val      20
+# test     4,200
+---------  -------
+Loading CLIP (backbone: ViT-B/16)
+Building custom CLIP
+MaPLe design: Multi-modal Prompt Learning
+Initial context: "a photo of a"
+Number of MaPLe context words (tokens): 2
+DAPR: lambda=0.1, gamma=0.0
+Turning off gradients in both the image and the text encoder
+Parameters to be updated: {'prompt_learner.compound_prompts_text.0', 'prompt_learner.compound_prompt_projections.5.bias', 'prompt_learner.compound_prompts_text.2', 'prompt_learner.compound_prompts_text.3', 'prompt_learner.compound_prompt_projections.4.bias', 'prompt_learner.compound_prompt_projections.2.bias', 'prompt_learner.compound_prompt_projections.3.bias', 'prompt_learner.compound_prompt_projections.5.weight', 'prompt_learner.compound_prompts_text.4', 'prompt_learner.proj.bias', 'prompt_learner.proj.weight', 'prompt_learner.compound_prompt_projections.0.weight', 'prompt_learner.compound_prompt_projections.4.weight', 'prompt_learner.compound_prompt_projections.1.bias', 'prompt_learner.compound_prompts_text.1', 'prompt_learner.ctx', 'prompt_learner.compound_prompt_projections.1.weight', 'prompt_learner.compound_prompts_text.5', 'prompt_learner.compound_prompt_projections.0.bias', 'prompt_learner.compound_prompt_projections.3.weight', 'prompt_learner.compound_prompt_projections.2.weight'}
+Loading evaluator: Classification
+No checkpoint found, train from scratch
+Initialize tensorboard (log_dir=output/ablation/dapr_depth7_gamma0_lambda01/seed3\tensorboard)
+epoch [1/5] batch [20/20] time 0.060 (0.108) data 0.023 (0.022) loss 1.2266 (1.2109) lr 3.5000e-03 eta 0:00:08
+epoch [2/5] batch [20/20] time 0.043 (0.042) data 0.005 (0.004) loss 0.3390 (0.8067) lr 3.1658e-03 eta 0:00:02
+epoch [3/5] batch [20/20] time 0.042 (0.042) data 0.004 (0.005) loss 0.4786 (0.4522) lr 2.2908e-03 eta 0:00:01
+epoch [4/5] batch [20/20] time 0.046 (0.042) data 0.006 (0.004) loss 0.8512 (0.2455) lr 1.2092e-03 eta 0:00:00
+epoch [5/5] batch [20/20] time 0.040 (0.042) data 0.005 (0.005) loss 0.7296 (0.2168) lr 3.3422e-04 eta 0:00:00
+Checkpoint saved to output/ablation/dapr_depth7_gamma0_lambda01/seed3\MultiModalPromptLearner\model.pth.tar-5
+Finish training
+Deploy the last-epoch model
+Evaluate on the *test* set
+  0%|          | 0/42 [00:00<?, ?it/s]  2%|2         | 1/42 [00:00<00:13,  2.96it/s]  5%|4         | 2/42 [00:00<00:11,  3.57it/s]  7%|7         | 3/42 [00:00<00:10,  3.84it/s] 10%|9         | 4/42 [00:01<00:09,  3.99it/s] 12%|#1        | 5/42 [00:01<00:09,  4.02it/s] 14%|#4        | 6/42 [00:01<00:08,  4.03it/s] 17%|#6        | 7/42 [00:01<00:08,  4.04it/s] 19%|#9        | 8/42 [00:02<00:08,  4.04it/s] 21%|##1       | 9/42 [00:02<00:08,  4.06it/s] 24%|##3       | 10/42 [00:02<00:07,  4.08it/s] 26%|##6       | 11/42 [00:02<00:07,  4.09it/s] 29%|##8       | 12/42 [00:03<00:07,  4.09it/s] 31%|###       | 13/42 [00:03<00:07,  4.07it/s] 33%|###3      | 14/42 [00:03<00:06,  4.03it/s] 36%|###5      | 15/42 [00:03<00:06,  4.04it/s] 38%|###8      | 16/42 [00:04<00:06,  4.05it/s] 40%|####      | 17/42 [00:04<00:06,  4.04it/s] 43%|####2     | 18/42 [00:04<00:05,  4.08it/s] 45%|####5     | 19/42 [00:04<00:05,  4.07it/s] 48%|####7     | 20/42 [00:04<00:05,  4.10it/s] 50%|#####     | 21/42 [00:05<00:05,  4.09it/s] 52%|#####2    | 22/42 [00:05<00:04,  4.09it/s] 55%|#####4    | 23/42 [00:05<00:04,  4.08it/s] 57%|#####7    | 24/42 [00:05<00:04,  4.06it/s] 60%|#####9    | 25/42 [00:06<00:04,  4.07it/s] 62%|######1   | 26/42 [00:06<00:03,  4.11it/s] 64%|######4   | 27/42 [00:06<00:03,  4.10it/s] 67%|######6   | 28/42 [00:06<00:03,  4.09it/s] 69%|######9   | 29/42 [00:07<00:03,  4.11it/s] 71%|#######1  | 30/42 [00:07<00:02,  4.10it/s] 74%|#######3  | 31/42 [00:07<00:02,  4.13it/s] 76%|#######6  | 32/42 [00:07<00:02,  4.11it/s] 79%|#######8  | 33/42 [00:08<00:02,  4.12it/s] 81%|########  | 34/42 [00:08<00:01,  4.12it/s] 83%|########3 | 35/42 [00:08<00:01,  4.13it/s] 86%|########5 | 36/42 [00:08<00:01,  4.14it/s] 88%|########8 | 37/42 [00:09<00:01,  4.14it/s] 90%|######### | 38/42 [00:09<00:00,  4.14it/s] 93%|#########2| 39/42 [00:09<00:00,  4.14it/s] 95%|#########5| 40/42 [00:09<00:00,  4.11it/s] 98%|#########7| 41/42 [00:10<00:00,  4.16it/s]100%|##########| 42/42 [00:10<00:00,  4.17it/s]100%|##########| 42/42 [00:10<00:00,  4.07it/s]
+=> result
+* total: 4,200
+* correct: 3,942
+* accuracy: 93.9%
+* error: 6.1%
+* macro_f1: 93.9%
+Elapsed: 0:00:16
+Setting fixed seed: 3
+***************
+** Arguments **
+***************
+backbone: 
+config_file: configs/trainers/MaPLe/vit_b16_c2_ep5_batch4_2ctx.yaml
+dataset_config_file: configs/datasets/eurosat.yaml
+eval_only: True
+head: 
+load_epoch: 5
+model_dir: output/ablation/dapr_depth7_gamma0_lambda01/seed3
+no_train: False
+opts: ['DATASET.NUM_SHOTS', '16', 'DATASET.SUBSAMPLE_CLASSES', 'new', 'DATALOADER.NUM_WORKERS', '0', 'TRAINER.MAPLE.PROMPT_DEPTH', '7']
+output_dir: output/ablation/dapr_depth7_gamma0_lambda01/seed3_novel_eval
+resume: 
+root: E:\Codes\yzm5110\datasets
+seed: 3
+source_domains: None
+target_domains: None
+trainer: MaPLe
+transforms: None
+************
+** Config **
+************
+DATALOADER:
+  K_TRANSFORMS: 1
+  NUM_WORKERS: 0
+  RETURN_IMG0: False
+  TEST:
+    BATCH_SIZE: 100
+    SAMPLER: SequentialSampler
+  TRAIN_U:
+    BATCH_SIZE: 32
+    N_DOMAIN: 0
+    N_INS: 16
+    SAME_AS_X: True
+    SAMPLER: RandomSampler
+  TRAIN_X:
+    BATCH_SIZE: 4
+    N_DOMAIN: 0
+    N_INS: 16
+    SAMPLER: RandomSampler
+DATASET:
+  ALL_AS_UNLABELED: False
+  CIFAR_C_LEVEL: 1
+  CIFAR_C_TYPE: 
+  NAME: EuroSAT
+  NUM_LABELED: -1
+  NUM_SHOTS: 16
+  ROOT: E:\Codes\yzm5110\datasets
+  SOURCE_DOMAINS: ()
+  STL10_FOLD: -1
+  SUBSAMPLE_CLASSES: new
+  TARGET_DOMAINS: ()
+  VAL_PERCENT: 0.1
+INPUT:
+  COLORJITTER_B: 0.4
+  COLORJITTER_C: 0.4
+  COLORJITTER_H: 0.1
+  COLORJITTER_S: 0.4
+  CROP_PADDING: 4
+  CUTOUT_LEN: 16
+  CUTOUT_N: 1
+  GB_K: 21
+  GB_P: 0.5
+  GN_MEAN: 0.0
+  GN_STD: 0.15
+  INTERPOLATION: bicubic
+  NO_TRANSFORM: False
+  PIXEL_MEAN: [0.48145466, 0.4578275, 0.40821073]
+  PIXEL_STD: [0.26862954, 0.26130258, 0.27577711]
+  RANDAUGMENT_M: 10
+  RANDAUGMENT_N: 2
+  RGS_P: 0.2
+  RRCROP_SCALE: (0.08, 1.0)
+  SIZE: (224, 224)
+  TRANSFORMS: ('random_resized_crop', 'random_flip', 'normalize')
+MODEL:
+  BACKBONE:
+    NAME: ViT-B/16
+    PRETRAINED: True
+  HEAD:
+    ACTIVATION: relu
+    BN: True
+    DROPOUT: 0.0
+    HIDDEN_LAYERS: ()
+    NAME: 
+  INIT_WEIGHTS: 
+OPTIM:
+  ADAM_BETA1: 0.9
+  ADAM_BETA2: 0.999
+  BASE_LR_MULT: 0.1
+  GAMMA: 0.1
+  LR: 0.0035
+  LR_SCHEDULER: cosine
+  MAX_EPOCH: 5
+  MOMENTUM: 0.9
+  NAME: sgd
+  NEW_LAYERS: ()
+  RMSPROP_ALPHA: 0.99
+  SGD_DAMPNING: 0
+  SGD_NESTEROV: False
+  STAGED_LR: False
+  STEPSIZE: (-1,)
+  WARMUP_CONS_LR: 1e-05
+  WARMUP_EPOCH: 1
+  WARMUP_MIN_LR: 1e-05
+  WARMUP_RECOUNT: True
+  WARMUP_TYPE: constant
+  WEIGHT_DECAY: 0.0005
+OUTPUT_DIR: output/ablation/dapr_depth7_gamma0_lambda01/seed3_novel_eval
+RESUME: 
+SEED: 3
+TEST:
+  COMPUTE_CMAT: False
+  EVALUATOR: Classification
+  FINAL_MODEL: last_step
+  NO_TEST: False
+  PER_CLASS_RESULT: False
+  SPLIT: test
+TRAIN:
+  CHECKPOINT_FREQ: 0
+  COUNT_ITER: train_x
+  PRINT_FREQ: 20
+TRAINER:
+  CDAC:
+    CLASS_LR_MULTI: 10
+    P_THRESH: 0.95
+    RAMPUP_COEF: 30
+    RAMPUP_ITRS: 1000
+    STRONG_TRANSFORMS: ()
+    TOPK_MATCH: 5
+  COCOOP:
+    CTX_INIT: 
+    N_CTX: 16
+    PREC: fp16
+  COOP:
+    CLASS_TOKEN_POSITION: end
+    CSC: False
+    CTX_INIT: 
+    N_CTX: 16
+    PREC: fp16
+  CROSSGRAD:
+    ALPHA_D: 0.5
+    ALPHA_F: 0.5
+    EPS_D: 1.0
+    EPS_F: 1.0
+  DAEL:
+    CONF_THRE: 0.95
+    STRONG_TRANSFORMS: ()
+    WEIGHT_U: 0.5
+  DAELDG:
+    CONF_THRE: 0.95
+    STRONG_TRANSFORMS: ()
+    WEIGHT_U: 0.5
+  DDAIG:
+    ALPHA: 0.5
+    CLAMP: False
+    CLAMP_MAX: 1.0
+    CLAMP_MIN: -1.0
+    G_ARCH: 
+    LMDA: 0.3
+    WARMUP: 0
+  DOMAINMIX:
+    ALPHA: 1.0
+    BETA: 1.0
+    TYPE: crossdomain
+  ENTMIN:
+    LMDA: 0.001
+  FIXMATCH:
+    CONF_THRE: 0.95
+    STRONG_TRANSFORMS: ()
+    WEIGHT_U: 1.0
+  IVLP:
+    CTX_INIT: a photo of a
+    N_CTX_TEXT: 2
+    N_CTX_VISION: 2
+    PREC: fp16
+    PROMPT_DEPTH_TEXT: 9
+    PROMPT_DEPTH_VISION: 9
+  M3SDA:
+    LMDA: 0.5
+    N_STEP_F: 4
+  MAPLE:
+    CTX_INIT: a photo of a
+    N_CTX: 2
+    PREC: fp16
+    PROMPT_DEPTH: 7
+  MCD:
+    N_STEP_F: 4
+  MEANTEACHER:
+    EMA_ALPHA: 0.999
+    RAMPUP: 5
+    WEIGHT_U: 1.0
+  MIXMATCH:
+    MIXUP_BETA: 0.75
+    RAMPUP: 20000
+    TEMP: 2.0
+    WEIGHT_U: 100.0
+  MME:
+    LMDA: 0.1
+  NAME: MaPLe
+  SE:
+    CONF_THRE: 0.95
+    EMA_ALPHA: 0.999
+    RAMPUP: 300
+  VPT:
+    CTX_INIT: a photo of a
+    N_CTX_VISION: 2
+    PREC: fp16
+    PROMPT_DEPTH_VISION: 1
+USE_CUDA: True
+VERBOSE: True
+VERSION: 1
+Collecting env info ...
+** System info **
+PyTorch version: 2.11.0+cu128
+Is debug build: False
+CUDA used to build PyTorch: 12.8
+ROCM used to build PyTorch: N/A
+
+OS: Microsoft Windows 11 Pro (10.0.26300 64-bit)
+GCC version: Could not collect
+Clang version: Could not collect
+CMake version: Could not collect
+Libc version: N/A
+
+Python version: 3.10.20 | packaged by Anaconda, Inc. | (main, Jun 11 2026, 15:13:20) [MSC v.1942 64 bit (AMD64)] (64-bit runtime)
+Python platform: Windows-10-10.0.26300-SP0
+Is CUDA available: True
+CUDA runtime version: Could not collect
+CUDA_MODULE_LOADING set to: 
+GPU models and configuration: GPU 0: NVIDIA GeForce RTX 5070 Ti Laptop GPU
+Nvidia driver version: Could not collect
+cuDNN version: Could not collect
+Is XPU available: False
+HIP runtime version: N/A
+MIOpen runtime version: N/A
+Is XNNPACK available: True
+Caching allocator config: N/A
+
+CPU:
+Name: AMD Ryzen 9 9955HX 16-Core Processor           
+Manufacturer: AuthenticAMD
+Family: 107
+Architecture: 9
+ProcessorType: 3
+DeviceID: CPU0
+CurrentClockSpeed: 2500
+MaxClockSpeed: 2500
+L2CacheSize: 16384
+L2CacheSpeed: None
+Revision: 17408
+
+Versions of relevant libraries:
+[pip3] flake8==7.4.1
+[pip3] mypy_extensions==1.2.0
+[pip3] numpy==1.26.4
+[pip3] torch==2.11.0+cu128
+[pip3] torchvision==0.26.0+cu128
+[conda] numpy                      1.26.4           pypi_0           pypi
+[conda] torch                      2.11.0+cu128     pypi_0           pypi
+[conda] torchvision                0.26.0+cu128     pypi_0           pypi
+        Pillow (12.3.0)
+
+Loading trainer: MaPLe
+Loading dataset: EuroSAT
+Reading split from E:\Codes\yzm5110\datasets\eurosat\split_zhou_EuroSAT.json
+Loading preprocessed few-shot data from E:\Codes\yzm5110\datasets\eurosat\split_fewshot\shot_16-seed_3.pkl
+SUBSAMPLE NEW CLASSES!
+Building transform_train
++ random resized crop (size=(224, 224), scale=(0.08, 1.0))
++ random flip
++ to torch tensor of range [0, 1]
++ normalization (mean=[0.48145466, 0.4578275, 0.40821073], std=[0.26862954, 0.26130258, 0.27577711])
+Building transform_test
++ resize the smaller edge to 224
++ 224x224 center crop
++ to torch tensor of range [0, 1]
++ normalization (mean=[0.48145466, 0.4578275, 0.40821073], std=[0.26862954, 0.26130258, 0.27577711])
+---------  -------
+Dataset    EuroSAT
+# classes  5
+# train_x  80
+# val      20
+# test     3,900
+---------  -------
+Loading CLIP (backbone: ViT-B/16)
+Building custom CLIP
+MaPLe design: Multi-modal Prompt Learning
+Initial context: "a photo of a"
+Number of MaPLe context words (tokens): 2
+DAPR: lambda=0.1, gamma=0.0
+Turning off gradients in both the image and the text encoder
+Parameters to be updated: {'prompt_learner.proj.weight', 'prompt_learner.compound_prompt_projections.3.weight', 'prompt_learner.compound_prompt_projections.4.weight', 'prompt_learner.compound_prompt_projections.3.bias', 'prompt_learner.compound_prompts_text.3', 'prompt_learner.compound_prompt_projections.0.weight', 'prompt_learner.compound_prompt_projections.2.weight', 'prompt_learner.proj.bias', 'prompt_learner.compound_prompts_text.0', 'prompt_learner.compound_prompt_projections.5.bias', 'prompt_learner.compound_prompt_projections.0.bias', 'prompt_learner.compound_prompt_projections.1.bias', 'prompt_learner.compound_prompt_projections.4.bias', 'prompt_learner.compound_prompt_projections.1.weight', 'prompt_learner.compound_prompts_text.1', 'prompt_learner.compound_prompt_projections.5.weight', 'prompt_learner.compound_prompts_text.5', 'prompt_learner.compound_prompts_text.4', 'prompt_learner.compound_prompts_text.2', 'prompt_learner.compound_prompt_projections.2.bias', 'prompt_learner.ctx'}
+Loading evaluator: Classification
+Loading weights to MultiModalPromptLearner from "output/ablation/dapr_depth7_gamma0_lambda01/seed3\MultiModalPromptLearner\model.pth.tar-5" (epoch = 5)
+Evaluate on the *test* set
+  0%|          | 0/39 [00:00<?, ?it/s]  3%|2         | 1/39 [00:00<00:35,  1.07it/s]  5%|5         | 2/39 [00:01<00:19,  1.92it/s]  8%|7         | 3/39 [00:01<00:13,  2.59it/s] 10%|#         | 4/39 [00:01<00:11,  3.06it/s] 13%|#2        | 5/39 [00:01<00:10,  3.40it/s] 15%|#5        | 6/39 [00:02<00:09,  3.66it/s] 18%|#7        | 7/39 [00:02<00:08,  3.85it/s] 21%|##        | 8/39 [00:02<00:07,  4.01it/s] 23%|##3       | 9/39 [00:02<00:07,  4.12it/s] 26%|##5       | 10/39 [00:03<00:06,  4.25it/s] 28%|##8       | 11/39 [00:03<00:06,  4.31it/s] 31%|###       | 12/39 [00:03<00:06,  4.37it/s] 33%|###3      | 13/39 [00:03<00:05,  4.41it/s] 36%|###5      | 14/39 [00:03<00:05,  4.43it/s] 38%|###8      | 15/39 [00:04<00:05,  4.40it/s] 41%|####1     | 16/39 [00:04<00:05,  4.41it/s] 44%|####3     | 17/39 [00:04<00:04,  4.42it/s] 46%|####6     | 18/39 [00:04<00:04,  4.45it/s] 49%|####8     | 19/39 [00:05<00:04,  4.44it/s] 51%|#####1    | 20/39 [00:05<00:04,  4.45it/s] 54%|#####3    | 21/39 [00:05<00:04,  4.46it/s] 56%|#####6    | 22/39 [00:05<00:03,  4.46it/s] 59%|#####8    | 23/39 [00:05<00:03,  4.43it/s] 62%|######1   | 24/39 [00:06<00:03,  4.43it/s] 64%|######4   | 25/39 [00:06<00:03,  4.44it/s] 67%|######6   | 26/39 [00:06<00:02,  4.41it/s] 69%|######9   | 27/39 [00:06<00:02,  4.25it/s] 72%|#######1  | 28/39 [00:07<00:02,  4.21it/s] 74%|#######4  | 29/39 [00:07<00:02,  4.24it/s] 77%|#######6  | 30/39 [00:07<00:02,  4.21it/s] 79%|#######9  | 31/39 [00:07<00:01,  4.16it/s] 82%|########2 | 32/39 [00:08<00:01,  4.17it/s] 85%|########4 | 33/39 [00:08<00:01,  4.18it/s] 87%|########7 | 34/39 [00:08<00:01,  4.17it/s] 90%|########9 | 35/39 [00:08<00:00,  4.14it/s] 92%|#########2| 36/39 [00:09<00:00,  4.11it/s] 95%|#########4| 37/39 [00:09<00:00,  4.08it/s] 97%|#########7| 38/39 [00:09<00:00,  4.09it/s]100%|##########| 39/39 [00:09<00:00,  4.05it/s]100%|##########| 39/39 [00:09<00:00,  3.99it/s]
+=> result
+* total: 3,900
+* correct: 2,859
+* accuracy: 73.3%
+* error: 26.7%
+* macro_f1: 64.8%
