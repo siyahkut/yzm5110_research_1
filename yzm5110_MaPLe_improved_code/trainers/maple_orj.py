@@ -244,7 +244,21 @@ class MaPLe(TrainerX):
             if param.requires_grad:
                 enabled.add(name)
         print(f"Parameters to be updated: {enabled}")
+        # Parameter efficiency measurement
+        trainable_params = sum(
+            p.numel() for p in self.model.parameters()
+            if p.requires_grad
+        )
+        total_params = sum(
+            p.numel() for p in self.model.parameters()
+        )
 
+        print("=" * 60)
+        print(f"PROMPT DEPTH: {cfg.TRAINER.MAPLE.PROMPT_DEPTH}")
+        print(f"Trainable parameters: {trainable_params:,}")
+        print(f"Total parameters: {total_params:,}")
+        print(f"Trainable ratio: {100 * trainable_params / total_params:.4f}%")
+        print("=" * 60)
         if cfg.MODEL.INIT_WEIGHTS:
             load_pretrained_weights(self.model, cfg.MODEL.INIT_WEIGHTS)
 
